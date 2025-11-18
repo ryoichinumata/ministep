@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>MiniStep – 今日のチャレンジ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" type="image/svg+xml" href="./logo-ministep.svg" />
+</head>
+
+<body>
+    <div class="page">
+        <header class="brand-header">
+            <div class="brand-logo">
+                <img src="./logo-ministep.svg" alt="MiniStepロゴ" loading="lazy" />
+            </div>
+            <div class="brand-text-center-absolute">
+                <div class="brand-name">MiniStep</div>
+                <div class="brand-subtitle">小さな挑戦ガチャ</div>
+            </div>
+        </header>
+
+        <div class="app">
+            <section class="today-info">
+                <span>今日の達成数<br /><strong><span id="today-count">0</span> 回</strong></span>
+                <span id="today-date"></span>
+            </section>
+
+            <article id="challenge-card" class="challenge-card">
+                <div class="challenge-label">今日のチャレンジ</div>
+                <div id="challenge-text" class="challenge-text">チャレンジを読み込み中…</div>
+                <div class="challenge-meta">
+                    <span id="challenge-category" class="pill">カテゴリ: -</span>
+                    <span id="challenge-difficulty" class="difficulty">難易度: ★☆☆</span>
+                </div>
+
+                <div class="actions actions-split">
+                    <div class="actions-left">
+                        <button id="reroll-btn" class="btn-outline" type="button">← もう一回ガチャ</button>
+                        <div class="reroll-info">今日の引き直し：<span id="reroll-count">0</span> / 3 回</div>
+                    </div>
+                    <button id="back-btn" class="btn-primary" type="button">OK（トップに戻る）</button>
+                </div>
+            </article>
+
+            <footer class="footer">※ ブラウザにだけ記録されます（ログインなし）<br />© MiniStep</footer>
+        </div>
+    </div>
+
+    <script src="./result.js"></script>
+</body>
+
+</html>

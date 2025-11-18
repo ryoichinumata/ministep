@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>MiniStep – 小さな挑戦ガチャ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="icon" type="image/svg+xml" href="./logo-ministep.svg" />
+</head>
+<body>
+  <div class="page">
+    <!-- ロゴ左＋テキスト中央 -->
+    <header class="brand-header">
+      <div class="brand-logo">
+        <img src="./logo-ministep.svg" alt="MiniStepロゴ" loading="lazy" />
+      </div>
+      <div class="brand-text-center-absolute">
+        <div class="brand-name">MiniStep</div>
+        <div class="brand-subtitle">小さな挑戦ガチャ</div>
+      </div>
+    </header>
+
+    <!-- 白いカード（アプリ本体） -->
+    <div class="app" role="main">
+      <!-- 今日のひとこと -->
+      <section class="quote" aria-labelledby="quote-title">
+        <div id="quote-title" class="quote-label">今日のひとこと</div>
+        <div id="daily-quote" class="quote-text">読み込み中…</div>
+        <div id="daily-quote-author" class="quote-author" aria-live="polite">&nbsp;</div>
+      </section>
+
+      <p class="subtitle">
+        ボタンを押すと、今日やってみる「ちいさなチャレンジ」が1つ出てきます。<br />
+        結果は次のページで表示されます。
+      </p>
+
+      <!-- ストreak -->
+      <section class="streak" aria-labelledby="streak-title">
+        <div id="streak-title" class="streak-label">連続達成日数</div>
+        <div class="streak-value"><span id="streak-count">0</span> 日</div>
+      </section>
+
+      <!-- マイ記録 -->
+      <section class="summary" aria-label="マイ記録">
+        <div class="summary-item">
+          <div class="summary-label">これまでの達成した日</div>
+          <div class="summary-value"><span id="summary-days">0</span> 日</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">累計チャレンジ数</div>
+          <div class="summary-value"><span id="summary-total">0</span> 件</div>
+        </div>
+      </section>
+
+      <!-- 今日のチャレンジ -->
+      <section class="today-challenge" aria-labelledby="today-title">
+        <div class="challenge-label" id="today-title">
+          今日のチャレンジ
+          <span class="badge-now" title="30日以内は同じチャレンジが出にくくなります">本日限定</span>
+        </div>
+
+        <div id="today-challenge-empty" class="today-challenge-empty">
+          まだガチャを引いていません。
+        </div>
+
+        <article id="today-challenge-card" class="challenge-card" aria-live="polite">
+          <!-- 進捗リング -->
+          <div class="challenge-progress" aria-hidden="true">
+            <svg viewBox="0 0 60 60" class="ring">
+              <circle cx="30" cy="30" r="26" class="bg"></circle>
+              <circle cx="30" cy="30" r="26" class="fg" id="today-ring"></circle>
+            </svg>
+            <div class="ring-text"><span id="today-ring-text">0/1</span></div>
+          </div>
+
+          <div id="today-challenge-text" class="challenge-text"></div>
+          <div class="challenge-meta">
+            <span id="today-challenge-category" class="pill" aria-label="カテゴリ"></span>
+            <span id="today-challenge-difficulty" class="difficulty" aria-label="難易度"></span>
+          </div>
+          <p class="micro-coach">できる範囲でOK。まずは“小さく”やってみよう。</p>
+          <div class="actions">
+            <button id="today-challenge-complete" class="btn-primary" type="button">
+              ✅ 達成した！
+            </button>
+          </div>
+        </article>
+      </section>
+
+      <!-- 今日の達成履歴 -->
+      <section class="today-history" aria-labelledby="today-history-title">
+        <div class="today-history-header">
+          <span id="today-history-title" class="today-history-title">今日の達成したチャレンジ</span>
+          <span class="today-history-count"><span id="today-done-count">0</span> 件</span>
+        </div>
+        <ul id="today-history-list" class="today-history-list">
+          <li class="empty">まだチャレンジは達成していません。</li>
+        </ul>
+        <button id="today-history-toggle" class="today-history-toggle" type="button" hidden>
+          すべて表示
+        </button>
+      </section>
+
+      <!-- カテゴリ（チップ） -->
+      <section class="filter-row filter-row-list" aria-labelledby="filter-title">
+        <div id="filter-title" class="filter-label">気分でえらぶ：</div>
+        <div class="category-list" id="category-list" role="listbox" aria-label="カテゴリ選択">
+          <button class="category-chip selected" data-category="all" role="option" aria-selected="true">なんでも</button>
+          <button class="category-chip" data-category="outside" role="option">外に出る</button>
+          <button class="category-chip" data-category="communication" role="option">人と話したい</button>
+          <button class="category-chip" data-category="self" role="option">じぶん時間</button>
+          <button class="category-chip" data-category="relax" role="option">ゆっくりしたい</button>
+          <button class="category-chip" data-category="refresh" role="option">リフレッシュ</button>
+          <button class="category-chip" data-category="focus" role="option">がんばりたい</button>
+        </div>
+      </section>
+
+      <!-- 下固定CTA（ガチャボタン） -->
+      <div class="sticky-cta">
+        <button id="draw-btn" class="gacha-button" aria-label="ガチャを引く">
+          <span class="dice" aria-hidden="true">🎰</span><span>ガチャを引く</span>
+        </button>
+      </div>
+
+      <!-- トースト（祝メッセージ用） -->
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+      <footer class="footer">© MiniStep</footer>
+    </div>
+  </div>
+
+  <!-- 初回チュートリアル -->
+  <div id="intro-overlay" class="intro-overlay" aria-modal="true" role="dialog" aria-labelledby="intro-title">
+    <div class="intro-card">
+      <div id="intro-title" class="intro-title">ようこそ MiniStep へ</div>
+      <p class="intro-text">
+        MiniStep は、<strong>「今日のちいさな一歩」を決めるためのガチャ</strong>です。
+      </p>
+      <ol class="intro-steps">
+        <li>気分をえらんで「ガチャを引く」を押す</li>
+        <li>出てきたチャレンジを、今日できる範囲でやってみる</li>
+        <li>できたらトップページで「✅ 達成した！」を押す</li>
+      </ol>
+      <p class="intro-note">
+        記録はこのブラウザだけに保存されます。<br />ログインやアカウント登録は不要です。
+      </p>
+      <button id="intro-start" class="btn-primary intro-button" type="button">はじめる</button>
+    </div>
+  </div>
+
+  <!-- 達成おめでとうモーダル（Xテキスト／画像共有ボタン付き） -->
+  <div id="congrats-overlay" class="modal-overlay" aria-modal="true" role="dialog" aria-labelledby="congrats-title">
+    <div class="modal">
+      <div id="congrats-title" class="modal-title">🎉 Congratulation！</div>
+      <p id="congrats-message" class="modal-message">今日のMiniStep、おつかれさまです！</p>
+      <button id="congrats-share-img" class="btn-outline modal-button" type="button">画像でシェア</button>
+      <button id="congrats-share-x" class="btn-x modal-button" type="button">𝕏 にシェア</button>
+      <button id="congrats-close" class="btn-primary modal-button" type="button">OK</button>
+    </div>
+  </div>
+
+  <!-- 共有画像用の非表示キャンバス -->
+  <canvas id="share-canvas" width="1200" height="630" style="display:none"></canvas>
+
+  <script src="./main.js"></script>
+</body>
+</html>

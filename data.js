@@ -1,0 +1,163 @@
+// data.js
+// MiniStep の「名言」と「チャレンジ」定義（拡張版）
+
+window.MINISTEP_DATA = {
+    // ========= 今日のひとこと（日本語） =========
+    quotes_ja: [
+        { text: "大きな変化も、はじめは小さな一歩から。", author: "MiniStep" },
+        { text: "完璧じゃなくていい。3ミリだけ前へ。", author: "MiniStep" },
+        { text: "やる気がない日の一歩こそ、いちばん価値が高い。", author: "MiniStep" },
+        { text: "昨日より1ミリやさしく、1ミリ前へ。", author: "MiniStep" },
+        { text: "続けるコツは、「がんばりすぎない」と決めておくこと。", author: "MiniStep" },
+        { text: "一見して人生には何の意味もない。しかし一つの意味もないということはあり得ない。", author: "アインシュタイン" },
+        { text: "天才とは努力する凡才のことである。", author: "アインシュタイン" },
+        { text: "落ち込んだ日は、「やったこと」だけ数えてみる。", author: "MiniStep" },
+        { text: "すごいことはいらない。「ちょっとだけ」が積み重なる。", author: "MiniStep" },
+        { text: "未来の自分は、今日の小さな一歩にきっと感謝する。", author: "MiniStep" },
+        { text: "調子がいい日は進み、調子が悪い日は止まらないことだけ。", author: "MiniStep" },
+        { text: "自分を変えるのは、思いつきじゃなくて「小さな習慣」。", author: "MiniStep" },
+
+        { text: "できなかった自分を責めるより、「戻ってきた自分」を褒めよう。", author: "MiniStep" },
+        { text: "今日の自分にやさしくできたら、それはもう前進。", author: "MiniStep" },
+        { text: "比べるなら、他人ではなく「昨日の自分」とだけ。", author: "MiniStep" },
+        { text: "0か100かじゃなくて、今日は「10」でじゅうぶん。", author: "MiniStep" },
+        { text: "一歩進んで半歩下がっても、まだ半歩進んでる。", author: "MiniStep" },
+        { text: "やる気は待たなくていい。「やりはじめたら」あとからついてくる。", author: "MiniStep" },
+        { text: "気分がのらない日は、「やるハードル」を足元まで下げてみる。", author: "MiniStep" },
+        { text: "小さな前進は、誰にも気づかれなくても、ちゃんとあなたの味方。", author: "MiniStep" },
+        { text: "「今日はこれでOK」と自分に言える日が、いちばん大事。", author: "MiniStep" },
+        { text: "がんばりすぎて続かないより、ゆるく続くほうがずっと強い。", author: "MiniStep" },
+
+        { text: "休むのもスキル。ちゃんと休める人だけが、また歩き出せる。", author: "MiniStep" },
+        { text: "続けられない日があっても、「戻ってきた日」がちゃんとある。", author: "MiniStep" },
+        { text: "自己肯定感は、大きな成功より「小さな約束を守れた日」で育つ。", author: "MiniStep" },
+        { text: "三日坊主は、三回くり返せば九日続いた人。実はもうすごい。", author: "MiniStep" },
+        { text: "「やめないぞ」じゃなくて「また戻ってこよう」でいい。", author: "MiniStep" },
+        { text: "今日の自分を100点にしなくていい。51点でOK。", author: "MiniStep" },
+        { text: "小さな一歩は、あとから振り返ると「大事な分かれ道」だったりする。", author: "MiniStep" },
+        { text: "がんばれない日は、「がんばらない」と決めた自分を守る日。", author: "MiniStep" },
+        { text: "できない日があっても、アプリを開いたあなたはもう一歩踏み出してる。", author: "MiniStep" },
+        { text: "「続けること」そのものを、ちょっとしたゲームにしてみよう。", author: "MiniStep" },
+
+        { text: "朝の3分は、夜の30分くらいの価値があるかもしれない。", author: "MiniStep" },
+        { text: "今日の「めんどくさい」は、明日の自分をちょっと守ってくれる。", author: "MiniStep" },
+        { text: "小さなチャレンジは、未来の自分への小さなおみやげ。", author: "MiniStep" },
+        { text: "できたかどうかより、「やってみよう」と思えたことが尊い。", author: "MiniStep" },
+        { text: "自分を甘やかす日と、自分を少しだけ甘く見る日をつくろう。", author: "MiniStep" },
+        { text: "今日の一歩は、小さいけれど「止まらなかった証拠」。", author: "MiniStep" },
+        { text: "がんばり屋さんほど、「今日はここまで」のラインを決めてみて。", author: "MiniStep" },
+        { text: "今の自分を変えたいと思えた時点で、もう変化ははじまっている。", author: "MiniStep" },
+        { text: "進めない日は、せめて「これだけはやらない」と決めてみる。", author: "MiniStep" },
+        { text: "うまくいかない日も、ストーリーの1ページにすぎない。", author: "MiniStep" }
+    ],
+
+    // ========= Daily quotes (English) =========
+    quotes_en: [
+        { text: "Big change starts with a tiny step.", author: "MiniStep" },
+        { text: "You don’t need perfect. Move a little bit forward.", author: "MiniStep" },
+        { text: "The step you take on a low-energy day matters the most.", author: "MiniStep" },
+        { text: "Be kinder than yesterday, and move 1 inch ahead.", author: "MiniStep" },
+        { text: "The secret of consistency is: don’t overdo it.", author: "MiniStep" },
+        { text: "On tough days, just count what you did, not what you couldn’t.", author: "MiniStep" },
+        { text: "You don’t need a big win. Tiny wins add up quietly.", author: "MiniStep" },
+        { text: "Future you will thank you for today’s small move.", author: "MiniStep" },
+        { text: "On good days, go forward. On bad days, just don’t quit.", author: "MiniStep" },
+        { text: "Real change comes from tiny habits, not big inspiration.", author: "MiniStep" },
+
+        { text: "Instead of blaming yourself for stopping, praise yourself for coming back.", author: "MiniStep" },
+        { text: "If you were kind to yourself today, that’s progress.", author: "MiniStep" },
+        { text: "Compare only with who you were yesterday, not with others.", author: "MiniStep" },
+        { text: "Life isn’t all-or-nothing. Today, 10% is enough.", author: "MiniStep" },
+        { text: "Two steps forward, one step back is still one step forward.", author: "MiniStep" },
+        { text: "Don’t wait for motivation. Start, and it will follow.", author: "MiniStep" },
+        { text: "On low days, lower the bar all the way to the floor.", author: "MiniStep" },
+        { text: "Tiny moves are invisible to others but life-changing for you.", author: "MiniStep" },
+        { text: "The most important skill is saying, “Today, this is enough.”", author: "MiniStep" },
+        { text: "Gentle consistency beats intense burnout every time.", author: "MiniStep" },
+
+        { text: "Rest is not the opposite of progress; it’s part of it.", author: "MiniStep" },
+        { text: "Even if you stop, the day you return is a victory.", author: "MiniStep" },
+        { text: "Self-trust grows from keeping tiny promises to yourself.", author: "MiniStep" },
+        { text: "Three false starts still mean you tried three times. That’s courage.", author: "MiniStep" },
+        { text: "You don’t have to say “I’ll never quit.” Just say “I’ll come back.”", author: "MiniStep" },
+        { text: "You don’t need to be a 100 today. 51% is already more than enough.", author: "MiniStep" },
+        { text: "Someday you’ll look back and see today’s tiny step as a turning point.", author: "MiniStep" },
+        { text: "On days you can’t push, protect your energy instead.", author: "MiniStep" },
+        { text: "If you opened this app today, you already took a step.", author: "MiniStep" },
+        { text: "Turn “staying consistent” into a small game you can win.", author: "MiniStep" },
+
+        { text: "Three minutes in the morning might save thirty at night.", author: "MiniStep" },
+        { text: "Today’s “ugh, I’ll do it” protects future you from stress.", author: "MiniStep" },
+        { text: "Tiny challenges are like small gifts to your future self.", author: "MiniStep" },
+        { text: "Trying matters more than nailing it.", author: "MiniStep" },
+        { text: "Have days to push yourself, and days to be soft with yourself.", author: "MiniStep" },
+        { text: "Today’s little step is proof you didn’t completely stop.", author: "MiniStep" },
+        { text: "If you’re a hard worker, your new skill is learning when to stop.", author: "MiniStep" },
+        { text: "Wanting to change is already the beginning of change.", author: "MiniStep" },
+        { text: "On stuck days, decide at least one thing you won’t do.", author: "MiniStep" },
+        { text: "A bad day is just a page, not the whole story.", author: "MiniStep" }
+    ],
+
+    // ========= チャレンジ一覧 =========
+    challenges: [
+        // --- outside（外に出る） ---
+        { text: "いつもと違う道でコンビニかスーパーに行ってみる", category: "outside", difficulty: 1 },
+        { text: "外に出て、空を見上げて深呼吸を3回するだけ散歩をする", category: "outside", difficulty: 1 },
+        { text: "近所で「ちょっとだけ気になっていた場所」を1か所だけ見に行ってみる", category: "outside", difficulty: 2 },
+        { text: "家の周りを5分だけ散歩して、気になったものを1つ見つける", category: "outside", difficulty: 1 },
+        { text: "最寄り駅までの道で、いつもと違う店の前を通ってみる", category: "outside", difficulty: 1 },
+        { text: "外に出て、季節を感じるものを1つ写真に撮る", category: "outside", difficulty: 2 },
+        { text: "エレベーターではなく、1フロア分だけ階段を使ってみる", category: "outside", difficulty: 1 },
+        { text: "近くの公園や広場に行って、ベンチに1分だけ座る", category: "outside", difficulty: 1 },
+
+        // --- communication（人と話したい） ---
+        { text: "職場や学校ですれ違った人に、いつもよりはっきりあいさつする", category: "communication", difficulty: 1 },
+        { text: "最近連絡していない友だちに、スタンプ1つでもいいのでメッセージを送る", category: "communication", difficulty: 2 },
+        { text: "お店の人や配達員さんに、いつもより一言多く「ありがとうございます」と伝える", category: "communication", difficulty: 2 },
+        { text: "今日「ありがとう」と言えた場面を1つ振り返って、心の中でもう一度伝える", category: "communication", difficulty: 1 },
+        { text: "SNSで誰かの投稿に、いいねや一言のポジティブなコメントをつけてみる", category: "communication", difficulty: 2 },
+        { text: "今日は身近な人の「いいところ」を1つだけ探してみる", category: "communication", difficulty: 1 },
+        { text: "困っていそうな人がいたら、心の中で「うまくいきますように」と祈ってみる", category: "communication", difficulty: 1 },
+        { text: "家族や同居人に「おつかれさま」と一言かける", category: "communication", difficulty: 1 },
+
+        // --- self（じぶん時間） ---
+        { text: "今日あった「ちょっと良かったこと」を3つ、紙かメモアプリに書き出す", category: "self", difficulty: 1 },
+        { text: "寝る前に、明日の自分への一言メッセージをメモする", category: "self", difficulty: 1 },
+        { text: "今の気持ちを「一言日記」として、1行だけメモしてみる", category: "self", difficulty: 1 },
+        { text: "今日、自分ががんばったことを1つだけ書き出す", category: "self", difficulty: 1 },
+        { text: "「今いちばん感謝しているもの」を1つ挙げてみる", category: "self", difficulty: 1 },
+        { text: "自分をほめる言葉を、照れながらでも1つ書いてみる", category: "self", difficulty: 2 },
+        { text: "過去の自分に伝えたい「ありがとう」を一言だけ考える", category: "self", difficulty: 1 },
+        { text: "今、気になっていることを3つ書き出して、ひとつにだけ〇をつける", category: "self", difficulty: 2 },
+
+        // --- relax（ゆっくりしたい） ---
+        { text: "スマホを5分だけ置いて、好きな飲み物をゆっくり味わう", category: "relax", difficulty: 1 },
+        { text: "お風呂に入る前に、深呼吸を3回してから湯船につかる", category: "relax", difficulty: 1 },
+        { text: "好きな音楽を1曲だけ、何もせずにじっくり聴く", category: "relax", difficulty: 1 },
+        { text: "部屋の照明を少し落として、1分だけ目を閉じてみる", category: "relax", difficulty: 1 },
+        { text: "肩・首・目のまわりを30秒だけゆっくりほぐす", category: "relax", difficulty: 1 },
+        { text: "寝る前のSNSスクロールを、いつもより5分だけ早く切り上げる", category: "relax", difficulty: 2 },
+        { text: "ベッドやソファに横になって、「今日はここまで」とつぶやく", category: "relax", difficulty: 1 },
+        { text: "香り（ハンドクリーム・お茶・コーヒーなど）をゆっくり味わう時間を1分つくる", category: "relax", difficulty: 2 },
+
+        // --- refresh（リフレッシュ） ---
+        { text: "コンビニで「初めて買うお菓子 or 飲み物」を1つ選ぶ", category: "refresh", difficulty: 1 },
+        { text: "5分だけストレッチをする（首・肩・背中など気持ちいいところ）", category: "refresh", difficulty: 1 },
+        { text: "窓を開けて外の空気を30秒だけ深呼吸する", category: "refresh", difficulty: 1 },
+        { text: "いつもと違う音楽ジャンルのプレイリストを1曲だけ聴いてみる", category: "refresh", difficulty: 2 },
+        { text: "部屋の中で「気になっていた場所」を10秒だけ片付ける", category: "refresh", difficulty: 1 },
+        { text: "冷たい水か温かいお茶で、気分を切り替える一杯を飲む", category: "refresh", difficulty: 1 },
+        { text: "姿勢を正して、肩をぐるぐる10回回してみる", category: "refresh", difficulty: 1 },
+        { text: "いつも見ないニュースや本のジャンルを1トピックだけ見てみる", category: "refresh", difficulty: 2 },
+
+        // --- focus（がんばりたい） ---
+        { text: "「やらなきゃ」と思っていたことを1つだけ、3分だけやってみる", category: "focus", difficulty: 2 },
+        { text: "机の上かカバンの中を、1か所だけ片付ける", category: "focus", difficulty: 1 },
+        { text: "今日中に終わらせたいことを1つだけ紙やメモアプリに書き出す", category: "focus", difficulty: 1 },
+        { text: "作業タイマーを3〜5分にセットして、その間だけ集中してみる", category: "focus", difficulty: 2 },
+        { text: "「やらなくてもいいことリスト」を3つ書いて、1つやめてみる", category: "focus", difficulty: 2 },
+        { text: "明日の自分が楽になるように、1つだけ下準備をしておく", category: "focus", difficulty: 2 },
+        { text: "たまっているメールやDMを1件だけ処理する", category: "focus", difficulty: 1 },
+        { text: "今後1週間で「絶対やりたいこと」を1つだけ決めてメモする", category: "focus", difficulty: 2 }
+    ]
+};

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MiniStep – 今日のチャレンジ</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- フォント -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page">
+        <header class="brand-header">
+            <div class="brand-logo">
+                <img src="logo-ministep.svg" alt="MiniStep logo">
+            </div>
+            <div class="brand-text-center-absolute">
+                <div class="brand-name">MiniStep</div>
+                <div class="brand-subtitle" data-i18n="subtitle_brand">小さな挑戦ガチャ</div>
+            </div>
+        </header>
+
+        <main class="app">
+            <header class="today-info">
+                <div>
+                    <div class="streak-label" data-i18n="today_challenge">今日のチャレンジ</div>
+                    <div class="streak-value">
+                        <span id="today-date">5月10日（水）</span>
+                    </div>
+                </div>
+
+                <!-- 引き直し情報だけ表示 -->
+                <div class="reroll-info">
+                    <span id="reroll-label" data-i18n="reroll_limit" data-i18n-arg='{"count":0}'>
+                        今日の引き直し：0 / 3 回
+                    </span>
+                    <span id="reroll-pill" class="reroll-pill">□□□ 0/3</span>
+                    <span id="reroll-pill-sr" class="sr-only">引き直しは残り3回です</span>
+                </div>
+            </header>
+
+            <!-- ★ ガチャ結果を表示するカード -->
+            <article id="challenge-card" class="challenge-card visible" aria-live="polite">
+                <div class="challenge-label">
+                    <span data-i18n="badge_today_only">本日限定</span>
+                </div>
+                <p id="challenge-text" class="challenge-text">
+                    ここに今日のチャレンジが表示されます。
+                </p>
+                <div class="challenge-meta">
+                    <span id="challenge-category" class="pill pill-outside">カテゴリ</span>
+                    <span id="challenge-difficulty" class="difficulty">難易度</span>
+                </div>
+                <p class="micro-coach" data-i18n="back_hint">
+                    このチャレンジは今日のトップに表示されます。達成したらトップで「✅ 達成した！」を押してください。
+                </p>
+            </article>
+
+            <!-- サポート用クイックアクション -->
+            <section class="quick-actions" aria-label="チャレンジのサポート">
+                <button id="qa-timer" class="btn-outline" data-i18n="qa_timer">⏱ 3分タイマー</button>
+                <button id="qa-memo" class="btn-outline" data-i18n="qa_memo">📝 メモを開く</button>
+                <button id="qa-map" class="btn-outline" data-i18n="qa_map">🧭 近くを歩く</button>
+            </section>
+
+            <!-- 引き直し / トップへ -->
+            <section class="sticky-cta">
+                <button id="reroll-btn" class="btn-outline" data-i18n="reroll">← もう一回ガチャ</button>
+                <button id="back-btn" class="gacha-button">
+                    <span class="dice">⏎</span>
+                    <span data-i18n="back_title">トップへ</span>
+                </button>
+                <p class="helper-text" data-i18n="back_sub">
+                    今日のカードに表示されます（達成はトップで）。
+                </p>
+            </section>
+        </main>
+    </div>
+
+    <script src="i18n.js"></script>
+    <script src="data.js"></script>
+    <script src="result.js"></script>
+</body>
+
+</html>

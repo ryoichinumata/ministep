@@ -217,6 +217,37 @@
 
         renderChallenge(currentChallenge);
 
+        renderChallenge(currentChallenge);
+
+        // --- Xシェアボタン ---
+        var shareBtn = document.getElementById("share-x-btn");
+        if (shareBtn) {
+            shareBtn.addEventListener("click", function () {
+                if (!currentChallenge || !currentChallenge.text) {
+                    // i18nで用意済み
+                    if (window.I18N && I18N.t) {
+                        alert(I18N.t("alert_share_missing"));
+                    } else {
+                        alert("シェアできるチャレンジが見つかりませんでした。");
+                    }
+                    return;
+                }
+
+                var lang = window.I18N ? I18N.get() : "ja";
+                var baseUrl = "https://ministep.jp/";
+                var textJa = "MiniStepで今日の小さなチャレンジを引きました：\n「" + currentChallenge.text + "」";
+                var textEn = "I got today’s tiny challenge on MiniStep:\n\"" + currentChallenge.text + "\"";
+
+                var text = (lang === "ja") ? textJa : textEn;
+
+                var intentUrl = "https://twitter.com/intent/tweet"
+                    + "?text=" + encodeURIComponent(text)
+                    + "&url=" + encodeURIComponent(baseUrl);
+
+                window.open(intentUrl, "_blank", "noopener,noreferrer");
+            });
+        }
+
         // reroll 状態
         var rerollBtn = document.getElementById("reroll-btn");
         var rerollLabel = document.getElementById("reroll-label");

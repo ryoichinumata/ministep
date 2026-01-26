@@ -682,6 +682,16 @@ button:focus-visible,.category-chip:focus-visible{
   padding:6px 10px;
 }
 
+.share-section{
+margin-top: 10px;
+}
+
+
+.share-section .btn-outline{
+width: 100%;
+justify-content: center;
+}
+
 /* Disabled */
 .btn-primary[disabled],
 .btn-outline[disabled],

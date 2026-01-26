@@ -108,7 +108,10 @@ window.MINISTEP_DATA = {
         { text: "最寄り駅までの道で、いつもと違う店の前を通ってみる", category: "outside", difficulty: 1 },
         { text: "外に出て、季節を感じるものを1つ写真に撮る", category: "outside", difficulty: 2 },
         { text: "エレベーターではなく、1フロア分だけ階段を使ってみる", category: "outside", difficulty: 1 },
-        { text: "近くの公園や広場に行って、ベンチに1分だけ座る", category: "outside", difficulty: 1 },
+        { text: "近くの公園や広場に行って、ベンチに1分だけ座る", category: "outside", difficulty: 1 }, { text: "家のすぐ近くまで出て、空の写真を1枚だけ撮ってみる", category: "outside", difficulty: 1 },
+        { text: "家から見えるところまで歩いて行き、「今日はここまで」と決めて引き返す", category: "outside", difficulty: 1 },
+        { text: "近くの自販機かコンビニまで行って、今日のご褒美ドリンクを1本だけ選ぶ", category: "outside", difficulty: 2 },
+        { text: "普段あまり行かない階やフロアにエレベーターで行って、景色を30秒だけ眺める", category: "outside", difficulty: 2 },
 
         // --- communication（人と話したい） ---
         { text: "職場や学校ですれ違った人に、いつもよりはっきりあいさつする", category: "communication", difficulty: 1 },
@@ -119,8 +122,16 @@ window.MINISTEP_DATA = {
         { text: "今日は身近な人の「いいところ」を1つだけ探してみる", category: "communication", difficulty: 1 },
         { text: "困っていそうな人がいたら、心の中で「うまくいきますように」と祈ってみる", category: "communication", difficulty: 1 },
         { text: "家族や同居人に「おつかれさま」と一言かける", category: "communication", difficulty: 1 },
+        { text: "今日中に「ありがとう」と伝えられそうな人を1人だけ思い浮かべてみる", category: "communication", difficulty: 1 },
+        { text: "最近お世話になった人に、3行以内のメッセージで感謝を伝えてみる", category: "communication", difficulty: 2 },
+        { text: "オンラインでもオフラインでも、誰かの良いところを心の中でそっと褒めてみる", category: "communication", difficulty: 1 },
+        { text: "SNSで「いいな」と思っていた人を1人フォローして、投稿を1つじっくり読む", category: "communication", difficulty: 2 },
 
         // --- self（じぶん時間） ---
+        { text: "今日の自分にキャッチコピーを1つつけてみる（例：「よくがんばった人」）", category: "self", difficulty: 1 },
+        { text: "今の気分を絵文字3つだけで表現して、メモに残してみる", category: "self", difficulty: 1 },
+        { text: "「最近の自分、ちょっとえらいな」と思えることを1つだけ書き出す", category: "self", difficulty: 1 },
+        { text: "1年前の自分にメッセージを送るつもりで、1〜2行だけ文章を書いてみる", category: "self", difficulty: 2 },
         { text: "今日あった「ちょっと良かったこと」を3つ、紙かメモアプリに書き出す", category: "self", difficulty: 1 },
         { text: "寝る前に、明日の自分への一言メッセージをメモする", category: "self", difficulty: 1 },
         { text: "今の気持ちを「一言日記」として、1行だけメモしてみる", category: "self", difficulty: 1 },
@@ -131,6 +142,10 @@ window.MINISTEP_DATA = {
         { text: "今、気になっていることを3つ書き出して、ひとつにだけ〇をつける", category: "self", difficulty: 2 },
 
         // --- relax（ゆっくりしたい） ---
+        { text: "今日5分だけ、通知をすべてオフにして静かな時間をつくる", category: "relax", difficulty: 2 },
+        { text: "好きな香り（コーヒー・お茶・入浴剤など）を意識して深呼吸しながら味わう", category: "relax", difficulty: 1 },
+        { text: "照明を少し暗くして、何も考えずに天井や壁をぼーっと眺める時間を1分つくる", category: "relax", difficulty: 1 },
+        { text: "寝る前にスマホを置いて、両手をぎゅっと握ってからゆっくり開く動作を3回してみる", category: "relax", difficulty: 1 },
         { text: "スマホを5分だけ置いて、好きな飲み物をゆっくり味わう", category: "relax", difficulty: 1 },
         { text: "お風呂に入る前に、深呼吸を3回してから湯船につかる", category: "relax", difficulty: 1 },
         { text: "好きな音楽を1曲だけ、何もせずにじっくり聴く", category: "relax", difficulty: 1 },
@@ -141,6 +156,10 @@ window.MINISTEP_DATA = {
         { text: "香り（ハンドクリーム・お茶・コーヒーなど）をゆっくり味わう時間を1分つくる", category: "relax", difficulty: 2 },
 
         // --- refresh（リフレッシュ） ---
+        { text: "いつもと違うコップやマグカップで飲み物を飲んで、気分を変えてみる", category: "refresh", difficulty: 1 },
+        { text: "好きな曲のサビだけ1回だけ歌ってみる（声に出さなくても口パクでもOK）", category: "refresh", difficulty: 1 },
+        { text: "タイマーを1分にセットして、その間だけ全力で伸び・あくび・肩回しをしてみる", category: "refresh", difficulty: 2 },
+        { text: "部屋の中で「視界に入るとちょっと気になるもの」を1つだけ片づける", category: "refresh", difficulty: 1 },
         { text: "コンビニで「初めて買うお菓子 or 飲み物」を1つ選ぶ", category: "refresh", difficulty: 1 },
         { text: "5分だけストレッチをする（首・肩・背中など気持ちいいところ）", category: "refresh", difficulty: 1 },
         { text: "窓を開けて外の空気を30秒だけ深呼吸する", category: "refresh", difficulty: 1 },
@@ -151,6 +170,10 @@ window.MINISTEP_DATA = {
         { text: "いつも見ないニュースや本のジャンルを1トピックだけ見てみる", category: "refresh", difficulty: 2 },
 
         // --- focus（がんばりたい） ---
+        { text: "「今いちばん気になっていること」を1つだけメモに書き出す", category: "focus", difficulty: 1 },
+        { text: "作業したい場所を整えるために、机の上から1つだけ物をどかす", category: "focus", difficulty: 1 },
+        { text: "やりたいことを3つ書き出して、その中から「今日やるのはこれ1つ」と決める", category: "focus", difficulty: 2 },
+        { text: "3分タイマーをセットして、その間だけ「迷っていた作業」に手をつけてみる", category: "focus", difficulty: 2 },
         { text: "「やらなきゃ」と思っていたことを1つだけ、3分だけやってみる", category: "focus", difficulty: 2 },
         { text: "机の上かカバンの中を、1か所だけ片付ける", category: "focus", difficulty: 1 },
         { text: "今日中に終わらせたいことを1つだけ紙やメモアプリに書き出す", category: "focus", difficulty: 1 },

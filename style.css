@@ -954,12 +954,3 @@ justify-content: center;
 }
 
 /* スマホで縦に並べたい場合 */
-@media (max-width: 480px) {
-  .mascot-hero-inner {
-    align-items: flex-start;
-  }
-
-  .mascot-comment-inner {
-    align-items: flex-start;
-  }
-}

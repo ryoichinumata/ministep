@@ -1,0 +1,53 @@
+<!-- ministe-kun.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
+  <!-- ほんのり背景サークル -->
+  <circle cx="160" cy="160" r="160" fill="#fff7ed" />
+
+  <!-- からだ（白） -->
+  <path
+    d="M160 60
+       C 115 60, 80 95, 80 142
+       C 80 195, 110 225, 120 252
+       C 128 274, 144 290, 160 290
+       C 176 290, 192 274, 200 252
+       C 210 225, 240 195, 240 142
+       C 240 95, 205 60, 160 60 Z"
+    fill="#ffffff"
+    stroke="#fed7aa"
+    stroke-width="3"
+  />
+
+  <!-- ほっぺ -->
+  <circle cx="130" cy="145" r="14" fill="#fed7aa" />
+  <circle cx="190" cy="145" r="14" fill="#fed7aa" />
+
+  <!-- 目 -->
+  <circle cx="132" cy="132" r="10" fill="#111827" />
+  <circle cx="188" cy="132" r="10" fill="#111827" />
+
+  <!-- 口（ちょいゆる笑顔） -->
+  <path
+    d="M132 165
+       C 145 180, 175 180, 188 165"
+    fill="none"
+    stroke="#111827"
+    stroke-width="6"
+    stroke-linecap="round"
+  />
+
+  <!-- 足（Mini“Step”感を強調） -->
+  <!-- 左足 -->
+  <ellipse cx="135" cy="255" rx="28" ry="20" fill="#ffffff" stroke="#fed7aa" stroke-width="3" />
+  <circle cx="150" cy="238" r="9" fill="#ffffff" stroke="#fed7aa" stroke-width="3" />
+  <circle cx="156" cy="248" r="8" fill="#ffffff" stroke="#fed7aa" stroke-width="3" />
+
+  <!-- 右足 -->
+  <ellipse cx="185" cy="255" rx="28" ry="20" fill="#ffffff" stroke="#fed7aa" stroke-width="3" />
+  <circle cx="170" cy="238" r="9" fill="#ffffff" stroke="#fed7aa" stroke-width="3" />
+  <circle cx="164" cy="248" r="8" fill="#ffffff" stroke="#fed7aa" stroke-width="3" />
+
+  <!-- アクセント用ミニステップカラー -->
+  <circle cx="65" cy="80" r="10" fill="#f97316" opacity="0.9" />
+  <circle cx="255" cy="85" r="8" fill="#fb923c" opacity="0.7" />
+  <circle cx="260" cy="220" r="7" fill="#fdba74" opacity="0.8" />
+</svg>

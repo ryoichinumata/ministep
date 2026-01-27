@@ -62,32 +62,51 @@
                     このチャレンジは今日のトップに表示されます。達成したらトップで「✅ 達成した！」を押してください。
                 </p>
             </article>
+            <main class="app result-app">
+                <!-- ここに今日のチャレンジの表示 ... -->
 
-            <!-- サポート用クイックアクション -->
-            <section class="quick-actions" aria-label="チャレンジのサポート">
-                <button id="qa-timer" class="btn-outline" data-i18n="qa_timer">⏱ 3分タイマー</button>
-                <button id="qa-memo" class="btn-outline" data-i18n="qa_memo">📝 メモを開く</button>
-                <button id="qa-map" class="btn-outline" data-i18n="qa_map">🧭 近くを歩く</button>
-            </section>
+                <!-- ▼ 追加：ミニステくんのひとこと -->
+                <section class="mascot-comment" aria-label="ミニステくんからのひとこと">
+                    <div class="mascot-comment-inner">
+                        <div class="mascot-comment-icon">
+                            <img src="ministe-kun.svg" alt="ミニステくん" loading="lazy">
+                        </div>
+                        <div class="mascot-comment-bubble">
+                            <p class="mascot-comment-label">ミニステくんからのひとこと</p>
+                            <p class="mascot-comment-text" id="mascot-comment-text">
+                                「この一歩ができたら、きょうは合格ってことにしよ〜」
+                            </p>
+                        </div>
+                    </div>
+                </section>
 
-            <section class="share-section" aria-label="シェア">
-                <button id="share-x-btn" class="btn-outline" data-i18n="share_x">
-                    𝕏 にシェア
-                </button>
-            </section>
+                <!-- 既存の「トップへ戻る」ボタンなど -->
 
-            <!-- 引き直し / トップへ -->
-            <section class="sticky-cta">
-                <button id="reroll-btn" class="btn-outline" data-i18n="reroll">← もう一回ガチャ</button>
-                <button id="back-btn" class="gacha-button">
-                    <span class="dice">⏎</span>
-                    <span data-i18n="back_title">トップへ</span>
-                </button>
-                <p class="helper-text" data-i18n="back_sub">
-                    今日のカードに表示されます（達成はトップで）。
-                </p>
-            </section>
-        </main>
+                <!-- サポート用クイックアクション -->
+                <section class="quick-actions" aria-label="チャレンジのサポート">
+                    <button id="qa-timer" class="btn-outline" data-i18n="qa_timer">⏱ 3分タイマー</button>
+                    <button id="qa-memo" class="btn-outline" data-i18n="qa_memo">📝 メモを開く</button>
+                    <button id="qa-map" class="btn-outline" data-i18n="qa_map">🧭 近くを歩く</button>
+                </section>
+
+                <section class="share-section" aria-label="シェア">
+                    <button id="share-x-btn" class="btn-outline" data-i18n="share_x">
+                        𝕏 にシェア
+                    </button>
+                </section>
+
+                <!-- 引き直し / トップへ -->
+                <section class="sticky-cta">
+                    <button id="reroll-btn" class="btn-outline" data-i18n="reroll">← もう一回ガチャ</button>
+                    <button id="back-btn" class="gacha-button">
+                        <span class="dice">⏎</span>
+                        <span data-i18n="back_title">トップへ</span>
+                    </button>
+                    <p class="helper-text" data-i18n="back_sub">
+                        今日のカードに表示されます（達成はトップで）。
+                    </p>
+                </section>
+            </main>
     </div>
 
     <script src="i18n.js"></script>

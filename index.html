@@ -65,130 +65,148 @@
 
 
         <main class="app">
-            <h1 class="sr-only">MiniStep – 小さな挑戦ガチャ</h1>
-
-            <!-- 今日のひとこと -->
-            <section class="quote" aria-label="今日のひとこと">
-                <div class="quote-label" data-i18n="daily_quote_label">今日のひとこと</div>
-                <div id="daily-quote" class="quote-text">「大きな変化も、はじめは小さな一歩から。」</div>
-                <div id="daily-quote-author" class="quote-author">― MiniStep</div>
-            </section>
-
-            <p class="subtitle" data-i18n="subtitle">
-                ボタンを押すと、今日やってみる「ちいさなチャレンジ」が1つ出てきます。結果は次のページで表示されます。
-            </p>
-
-            <!-- ストリーク -->
-            <section class="streak" aria-label="連続達成">
-                <div>
-                    <div class="streak-label" data-i18n="streak_label">連続達成日数</div>
-                    <div class="streak-value">
-                        <span id="streak-count">0</span><span data-i18n="unit_day">日</span>
-                    </div>
-                </div>
-                <div class="streak-side">
-                    <div class="summary-label" data-i18n="summary_days_label">これまでの達成した日</div>
-                    <div class="summary-value"><span id="summary-days">0</span></div>
-                </div>
-            </section>
-
-            <!-- 今日のチャレンジ -->
-            <section class="today-challenge" aria-label="今日のチャレンジ">
-                <div class="today-challenge-header">
-                    <div class="challenge-label" data-i18n="today_challenge">今日のチャレンジ</div>
-                </div>
-
-                <p id="today-challenge-empty" class="today-challenge-empty" data-i18n="empty_state_not_drawn">
-                    まだガチャを引いていません。
-                </p>
-
-                <article id="today-challenge-card" class="challenge-card" aria-live="polite">
-                    <div id="today-done-stamp" class="done-stamp">
-                        <span data-i18n="stamp_done">達成</span>
-                    </div>
-
-                    <!-- ★ 右上の丸い達成カウンターは削除しました -->
-
-                    <div class="challenge-label">
-                        <span data-i18n="badge_today_only">本日限定</span>
-                        <span class="badge-now">Today</span>
-                    </div>
-
-                    <p id="today-challenge-text" class="challenge-text">
-                        ここに今日のチャレンジが表示されます。
-                    </p>
-
-                    <div class="challenge-meta">
-                        <span id="today-challenge-category" class="pill pill-outside">カテゴリ</span>
-                        <span id="today-challenge-difficulty" class="difficulty">難易度</span>
-                    </div>
-
-                    <p class="micro-coach" data-i18n="micro_coach">
-                        できる範囲でOK。まずは“小さく”やってみよう。
-                    </p>
-
-                    <div class="actions">
-                        <div class="actions-left">
-                            <button id="today-challenge-complete" class="btn-primary" data-i18n="mark_done">
-                                ✅ 達成した！
-                            </button>
-                            <p id="daily-limit-note" class="helper-text" style="display:none;"></p>
+            <main class="app">
+                <!-- ▼ 追加：ミニステくん公式キャラクター紹介 -->
+                <section class="mascot-hero" aria-label="MiniStep公式キャラクター ミニステくん">
+                    <div class="mascot-hero-inner">
+                        <div class="mascot-hero-illust">
+                            <img src="ministe-kun.svg" alt="MiniStep公式キャラクター ミニステくん" loading="lazy">
+                        </div>
+                        <div class="mascot-hero-speech">
+                            <p class="mascot-hero-title">公式キャラクター ミニステくん</p>
+                            <p class="mascot-hero-text">
+                                「がんばるのむずかしい日は、<br>
+                                <strong>ちいさな一歩だけ</strong>いっしょに踏み出そ〜👣」
+                            </p>
                         </div>
                     </div>
-                </article>
-            </section>
+                </section>
 
-            <!-- 気分でえらぶ -->
-            <section class="filter-row" aria-label="気分でえらぶ">
-                <div class="filter-label" data-i18n="filter_label">気分でえらぶ：</div>
-                <div id="category-list" class="category-list">
-                    <button type="button" class="category-chip selected" data-category="all">
-                        <span data-i18n="cat_all">なんでも</span>
-                    </button>
-                    <button type="button" class="category-chip" data-category="outside">
-                        <span data-i18n="cat_outside">外に出る</span>
-                    </button>
-                    <button type="button" class="category-chip" data-category="communication">
-                        <span data-i18n="cat_communication">人と話したい</span>
-                    </button>
-                    <button type="button" class="category-chip" data-category="self">
-                        <span data-i18n="cat_self">じぶん時間</span>
-                    </button>
-                    <button type="button" class="category-chip" data-category="relax">
-                        <span data-i18n="cat_relax">ゆっくりしたい</span>
-                    </button>
-                    <button type="button" class="category-chip" data-category="refresh">
-                        <span data-i18n="cat_refresh">リフレッシュ</span>
-                    </button>
-                    <button type="button" class="category-chip" data-category="focus">
-                        <span data-i18n="cat_focus">がんばりたい</span>
-                    </button>
-                </div>
-            </section>
+                <!-- ここから既存のガチャUIなど -->
+                <h1 class="sr-only">MiniStep – 小さな挑戦ガチャ</h1>
 
-            <!-- ガチャボタン -->
-            <section class="sticky-cta">
-                <button id="draw-btn" class="gacha-button">
-                    <span class="dice">🎲</span>
-                    <span data-i18n="draw">ガチャを引く</span>
-                </button>
-            </section>
-            <!-- 読みもの（ブログ）への導線 -->
-            <section class="blog-teaser" aria-label="MiniStepの読みもの">
-                <h2 class="blog-teaser-title">MiniStepの読みもの</h2>
-                <p class="blog-teaser-text">
-                    「やる気が出ない日」「三日坊主になってしまう」「がんばりすぎてしまう」――
-                    そんな日に役立つ、MiniStepの考え方やミニコラムをまとめています。
+                <!-- 今日のひとこと -->
+                <section class="quote" aria-label="今日のひとこと">
+                    <div class="quote-label" data-i18n="daily_quote_label">今日のひとこと</div>
+                    <div id="daily-quote" class="quote-text">「大きな変化も、はじめは小さな一歩から。」</div>
+                    <div id="daily-quote-author" class="quote-author">― MiniStep</div>
+                </section>
+
+                <p class="subtitle" data-i18n="subtitle">
+                    ボタンを押すと、今日やってみる「ちいさなチャレンジ」が1つ出てきます。結果は次のページで表示されます。
                 </p>
-                <a href="blog.html" class="btn-outline blog-teaser-button">
-                    読みもの一覧を見る
-                </a>
-            </section>
-        </main>
 
-        <footer class="footer">
-            MiniStep · <a href="about.html">MiniStepとは？</a>
-        </footer>
+                <!-- ストリーク -->
+                <section class="streak" aria-label="連続達成">
+                    <div>
+                        <div class="streak-label" data-i18n="streak_label">連続達成日数</div>
+                        <div class="streak-value">
+                            <span id="streak-count">0</span><span data-i18n="unit_day">日</span>
+                        </div>
+                    </div>
+                    <div class="streak-side">
+                        <div class="summary-label" data-i18n="summary_days_label">これまでの達成した日</div>
+                        <div class="summary-value"><span id="summary-days">0</span></div>
+                    </div>
+                </section>
+
+                <!-- 今日のチャレンジ -->
+                <section class="today-challenge" aria-label="今日のチャレンジ">
+                    <div class="today-challenge-header">
+                        <div class="challenge-label" data-i18n="today_challenge">今日のチャレンジ</div>
+                    </div>
+
+                    <p id="today-challenge-empty" class="today-challenge-empty" data-i18n="empty_state_not_drawn">
+                        まだガチャを引いていません。
+                    </p>
+
+                    <article id="today-challenge-card" class="challenge-card" aria-live="polite">
+                        <div id="today-done-stamp" class="done-stamp">
+                            <span data-i18n="stamp_done">達成</span>
+                        </div>
+
+                        <!-- ★ 右上の丸い達成カウンターは削除しました -->
+
+                        <div class="challenge-label">
+                            <span data-i18n="badge_today_only">本日限定</span>
+                            <span class="badge-now">Today</span>
+                        </div>
+
+                        <p id="today-challenge-text" class="challenge-text">
+                            ここに今日のチャレンジが表示されます。
+                        </p>
+
+                        <div class="challenge-meta">
+                            <span id="today-challenge-category" class="pill pill-outside">カテゴリ</span>
+                            <span id="today-challenge-difficulty" class="difficulty">難易度</span>
+                        </div>
+
+                        <p class="micro-coach" data-i18n="micro_coach">
+                            できる範囲でOK。まずは“小さく”やってみよう。
+                        </p>
+
+                        <div class="actions">
+                            <div class="actions-left">
+                                <button id="today-challenge-complete" class="btn-primary" data-i18n="mark_done">
+                                    ✅ 達成した！
+                                </button>
+                                <p id="daily-limit-note" class="helper-text" style="display:none;"></p>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+
+                <!-- 気分でえらぶ -->
+                <section class="filter-row" aria-label="気分でえらぶ">
+                    <div class="filter-label" data-i18n="filter_label">気分でえらぶ：</div>
+                    <div id="category-list" class="category-list">
+                        <button type="button" class="category-chip selected" data-category="all">
+                            <span data-i18n="cat_all">なんでも</span>
+                        </button>
+                        <button type="button" class="category-chip" data-category="outside">
+                            <span data-i18n="cat_outside">外に出る</span>
+                        </button>
+                        <button type="button" class="category-chip" data-category="communication">
+                            <span data-i18n="cat_communication">人と話したい</span>
+                        </button>
+                        <button type="button" class="category-chip" data-category="self">
+                            <span data-i18n="cat_self">じぶん時間</span>
+                        </button>
+                        <button type="button" class="category-chip" data-category="relax">
+                            <span data-i18n="cat_relax">ゆっくりしたい</span>
+                        </button>
+                        <button type="button" class="category-chip" data-category="refresh">
+                            <span data-i18n="cat_refresh">リフレッシュ</span>
+                        </button>
+                        <button type="button" class="category-chip" data-category="focus">
+                            <span data-i18n="cat_focus">がんばりたい</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- ガチャボタン -->
+                <section class="sticky-cta">
+                    <button id="draw-btn" class="gacha-button">
+                        <span class="dice">🎲</span>
+                        <span data-i18n="draw">ガチャを引く</span>
+                    </button>
+                </section>
+                <!-- 読みもの（ブログ）への導線 -->
+                <section class="blog-teaser" aria-label="MiniStepの読みもの">
+                    <h2 class="blog-teaser-title">MiniStepの読みもの</h2>
+                    <p class="blog-teaser-text">
+                        「やる気が出ない日」「三日坊主になってしまう」「がんばりすぎてしまう」――
+                        そんな日に役立つ、MiniStepの考え方やミニコラムをまとめています。
+                    </p>
+                    <a href="blog.html" class="btn-outline blog-teaser-button">
+                        読みもの一覧を見る
+                    </a>
+                </section>
+            </main>
+
+            <footer class="footer">
+                MiniStep · <a href="about.html">MiniStepとは？</a>
+            </footer>
     </div>
 
     <!-- お祝いモーダル -->

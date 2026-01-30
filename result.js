@@ -217,8 +217,6 @@
 
         renderChallenge(currentChallenge);
 
-        renderChallenge(currentChallenge);
-
         // --- Xシェアボタン ---
         var shareBtn = document.getElementById("share-x-btn");
         if (shareBtn) {
@@ -234,7 +232,7 @@
                 }
 
                 var lang = window.I18N ? I18N.get() : "ja";
-                var baseUrl = "https://ministep.jp/";
+                var baseUrl = "https://ministep.net/";
                 var textJa = "MiniStepで今日の小さなチャレンジを引きました：\n「" + currentChallenge.text + "」";
                 var textEn = "I got today’s tiny challenge on MiniStep:\n\"" + currentChallenge.text + "\"";
 
@@ -349,7 +347,7 @@
         var mBtn = document.getElementById("qa-memo");
         if (mBtn) {
             mBtn.addEventListener("click", function () {
-                window.open("https://keep.google.com/", "_blank");
+                window.open("https://keep.google.com/", "_blank", "noopener,noreferrer");
             });
         }
 
@@ -358,9 +356,9 @@
             mapBtn.addEventListener("click", function () {
                 var langNow = window.I18N ? I18N.get() : "ja";
                 if (langNow === "ja") {
-                    window.open("https://www.google.com/maps/search/%E6%95%A3%E6%AD%A9%E3%82%B3%E3%83%BC%E3%82%B9/", "_blank");
+                    window.open("https://www.google.com/maps/search/%E6%95%A3%E6%AD%A9%E3%82%B3%E3%83%BC%E3%82%B9/", "_blank", "noopener,noreferrer");
                 } else {
-                    window.open("https://www.google.com/maps/search/walk+spots/", "_blank");
+                    window.open("https://www.google.com/maps/search/walk+spots/", "_blank", "noopener,noreferrer");
                 }
             });
         }

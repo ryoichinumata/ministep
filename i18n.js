@@ -189,7 +189,6 @@
 
     function apply() {
         try {
-            document.title = t("app_title");
             var list = document.querySelectorAll("[data-i18n]");
             var i;
             for (i = 0; i < list.length; i++) {

@@ -954,3 +954,58 @@ justify-content: center;
 }
 
 /* スマホで縦に並べたい場合 */
+
+/* =========================
+   SEO / Navigation helpers
+   ========================= */
+
+/* Make the brand logo clickable without changing layout */
+.brand-home-link{
+  display:inline-block;
+  line-height:0;
+  text-decoration:none;
+}
+.brand-home-link:focus-visible{
+  outline:2px solid var(--brand-400);
+  outline-offset:4px;
+  border-radius:10px;
+}
+
+/* Breadcrumb (lightweight) */
+.breadcrumb{
+  width:100%;
+  max-width:480px;
+  margin:0 0 10px;
+  font-size:11px;
+  color:var(--color-text-muted);
+}
+.breadcrumb ol{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  align-items:center;
+}
+.breadcrumb li{
+  display:flex;
+  align-items:center;
+}
+.breadcrumb li + li::before{
+  content:"/";
+  margin:0 6px 0 2px;
+  opacity:.6;
+}
+.breadcrumb a{
+  color:inherit;
+  text-decoration:underline;
+  text-underline-offset:2px;
+}
+
+/* Footer links */
+.footer a{
+  color:inherit;
+  text-decoration:underline;
+  text-underline-offset:2px;
+}

@@ -1,67 +1,83 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ministep.net/</loc>
     <priority>1.0</priority>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://ministep.net/about.html</loc>
     <priority>0.6</priority>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://ministep.net/blog.html</loc>
     <priority>0.8</priority>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://ministep.net/article-1.html</loc>
     <priority>0.7</priority>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://ministep.net/article-2.html</loc>
     <priority>0.7</priority>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://ministep.net/article-3.html</loc>
     <priority>0.7</priority>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://ministep.net/article-4.html</loc>
     <priority>0.7</priority>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://ministep.net/article-5.html</loc>
     <priority>0.7</priority>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://ministep.net/article-6.html</loc>
     <priority>0.7</priority>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://ministep.net/article-7.html</loc>
     <priority>0.7</priority>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://ministep.net/article-8.html</loc>
     <priority>0.7</priority>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://ministep.net/article-9.html</loc>
     <priority>0.7</priority>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://ministep.net/article-10.html</loc>
     <priority>0.7</priority>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://ministep.net/article-11.html</loc>
     <priority>0.7</priority>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://ministep.net/article-12.html</loc>
     <priority>0.7</priority>
+    <lastmod>2026-01-30</lastmod>
   </url>
   <url>
     <loc>https://ministep.net/article-13.html</loc>
     <priority>0.7</priority>
+    <lastmod>2026-01-30</lastmod>
   </url>
 </urlset>

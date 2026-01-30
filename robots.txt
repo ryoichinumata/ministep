@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Not a public page (old fragment). Recommended to delete from server.
+Disallow: /contract_faq.html
+
+Sitemap: https://ministep.net/sitemap.xml

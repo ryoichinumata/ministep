@@ -532,8 +532,9 @@ body{
   animation:confetti-fall 900ms ease-out forwards;
   opacity:.9;
 }
-.confetti span:nth-child(3n){background:#fb923c}
+.confetti span:nth-child(3n){background:#2D9D5E}
 .confetti span:nth-child(4n){background:#facc15}
+.confetti span:nth-child(5n){background:#5FBF84}
 @keyframes confetti-fall{
   to{
     transform:translateY(120vh) rotate(360deg);
@@ -857,7 +858,84 @@ justify-content: center;
   }
 }
 
-/* ====== ミニステくん（公式キャラクター） ====== */
+/* ====== Steppy Sprout キャラクターアニメーション ====== */
+
+/* --- Sprout Keyframes --- */
+@keyframes sprout-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.025); }
+}
+@keyframes sprout-sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+@keyframes sprout-leaf-l {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(3deg); }
+}
+@keyframes sprout-leaf-r {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(4deg); }
+  70% { transform: rotate(-3deg); }
+}
+@keyframes sprout-blink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  94% { transform: scaleY(0.1); }
+}
+@keyframes sprout-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+@keyframes sprout-celebrate {
+  0%, 100% { transform: translateY(0) scale(1); }
+  25% { transform: translateY(-12px) scale(1.04); }
+  45% { transform: translateY(0) scaleY(0.92) scaleX(1.06); }
+  60% { transform: translateY(-5px) scale(1.02); }
+  75% { transform: translateY(0) scaleY(0.97) scaleX(1.02); }
+}
+
+/* --- Sprout animation assignments --- */
+.sprout-animated svg {
+  animation: sprout-float 3s ease-in-out infinite;
+}
+.sprout-body {
+  animation: sprout-breathe 3s ease-in-out infinite;
+  transform-origin: center 90%;
+}
+.sprout-eyes {
+  animation: sprout-blink 4.5s ease-in-out infinite;
+  transform-origin: center;
+}
+.sprout-stem {
+  animation: sprout-sway 4s ease-in-out infinite;
+  transform-origin: 50% 100%;
+}
+.sprout-leaf-l {
+  animation: sprout-leaf-l 3.2s ease-in-out infinite;
+  transform-origin: 100% 100%;
+}
+.sprout-leaf-r {
+  animation: sprout-leaf-r 3.8s 0.5s ease-in-out infinite;
+  transform-origin: 0% 100%;
+}
+.sprout-celebrate {
+  animation: sprout-celebrate 1.4s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .sprout-animated svg,
+  .sprout-body,
+  .sprout-eyes,
+  .sprout-stem,
+  .sprout-leaf-l,
+  .sprout-leaf-r,
+  .sprout-celebrate {
+    animation: none !important;
+  }
+}
 
 /* トップページの紹介ブロック */
 .mascot-hero {
@@ -870,17 +948,18 @@ justify-content: center;
   gap: 12px;
   padding: 10px 12px;
   border-radius: 16px;
-  background: #f9fafb;
+  background: linear-gradient(135deg, #f0faf4, #fafdf7);
+  border: 1px solid rgba(45, 157, 94, 0.1);
 }
 
 .mascot-hero-illust {
   flex: 0 0 72px;
 }
 
-.mascot-hero-illust img {
+.mascot-hero-illust svg {
   display: block;
   width: 72px;
-  height: 72px;
+  height: 98px;
 }
 
 .mascot-hero-speech {
@@ -890,7 +969,7 @@ justify-content: center;
 .mascot-hero-title {
   font-size: 12px;
   font-weight: 700;
-  color: #6b7280;
+  color: #2D9D5E;
   margin-bottom: 4px;
 }
 
@@ -915,10 +994,32 @@ justify-content: center;
   flex: 0 0 52px;
 }
 
-.mascot-comment-icon img {
+.mascot-comment-icon svg {
   display: block;
   width: 52px;
-  height: 52px;
+  height: 72px;
+}
+
+/* Small sprout animations (result page) */
+.sprout-animated-sm .sprout-body {
+  animation: sprout-breathe 3.5s ease-in-out infinite;
+  transform-origin: center 90%;
+}
+.sprout-animated-sm .sprout-eyes {
+  animation: sprout-blink 5s ease-in-out infinite;
+  transform-origin: center;
+}
+.sprout-animated-sm .sprout-stem {
+  animation: sprout-sway 4.5s ease-in-out infinite;
+  transform-origin: 50% 100%;
+}
+.sprout-animated-sm .sprout-leaf-l {
+  animation: sprout-leaf-l 3.5s ease-in-out infinite;
+  transform-origin: 100% 100%;
+}
+.sprout-animated-sm .sprout-leaf-r {
+  animation: sprout-leaf-r 4s 0.3s ease-in-out infinite;
+  transform-origin: 0% 100%;
 }
 
 .mascot-comment-bubble {
@@ -926,7 +1027,8 @@ justify-content: center;
   flex: 1;
   border-radius: 14px;
   padding: 8px 10px;
-  background: #fef3c7;
+  background: #ecfdf5;
+  border: 1px solid rgba(45, 157, 94, 0.12);
 }
 
 .mascot-comment-bubble::before {
@@ -936,21 +1038,26 @@ justify-content: center;
   top: 16px;
   width: 12px;
   height: 12px;
-  background: #fef3c7;
+  background: #ecfdf5;
   transform: rotate(45deg);
 }
 
 .mascot-comment-label {
   font-size: 11px;
   font-weight: 700;
-  color: #92400e;
+  color: #2D9D5E;
   margin-bottom: 2px;
 }
 
 .mascot-comment-text {
   font-size: 13px;
   line-height: 1.5;
-  color: #78350f;
+  color: #1a2e1a;
+}
+
+/* Congrats modal sprout */
+.congrats-sprout {
+  margin-bottom: 8px;
 }
 
 /* スマホで縦に並べたい場合 */

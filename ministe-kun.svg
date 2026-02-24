@@ -1,53 +1,82 @@
-<!-- ministe-kun.svg -->
+<!-- steppy-sprout.svg - MiniStep mascot "Steppy Sprout" -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
-  <!-- ほんのり背景サークル -->
-  <circle cx="160" cy="160" r="160" fill="#fff7ed" />
+  <defs>
+    <linearGradient id="seedBody" x1="120" y1="120" x2="200" y2="280" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F0D88C"/>
+      <stop offset="60%" stop-color="#E8C97A"/>
+      <stop offset="100%" stop-color="#D4A84B"/>
+    </linearGradient>
+  </defs>
 
-  <!-- からだ（白） -->
+  <!-- Soft background circle -->
+  <circle cx="160" cy="160" r="160" fill="#F2F8F0"/>
+
+  <!-- Ambient sparkles -->
+  <circle cx="60" cy="72" r="5" fill="#F4C542" opacity="0.55"/>
+  <circle cx="262" cy="80" r="4" fill="#F4C542" opacity="0.4"/>
+  <circle cx="256" cy="210" r="3.5" fill="#F4C542" opacity="0.45"/>
+
+  <!-- Soil shadow -->
+  <ellipse cx="160" cy="272" rx="60" ry="14" fill="#C4956A" opacity="0.3"/>
+
+  <!-- Seed body -->
   <path
-    d="M160 60
-       C 115 60, 80 95, 80 142
-       C 80 195, 110 225, 120 252
-       C 128 274, 144 290, 160 290
-       C 176 290, 192 274, 200 252
-       C 210 225, 240 195, 240 142
-       C 240 95, 205 60, 160 60 Z"
-    fill="#ffffff"
-    stroke="#fed7aa"
-    stroke-width="3"
+    d="M118 220
+       Q106 180 118 155
+       Q132 130 160 126
+       Q188 130 202 155
+       Q214 180 202 220
+       Q196 248 186 260
+       Q174 272 160 274
+       Q146 272 134 260
+       Q124 248 118 220Z"
+    fill="url(#seedBody)"
   />
 
-  <!-- ほっぺ -->
-  <circle cx="130" cy="145" r="14" fill="#fed7aa" />
-  <circle cx="190" cy="145" r="14" fill="#fed7aa" />
+  <!-- Body highlight -->
+  <ellipse cx="142" cy="175" rx="18" ry="28" fill="white" opacity="0.12"/>
 
-  <!-- 目 -->
-  <circle cx="132" cy="132" r="10" fill="#111827" />
-  <circle cx="188" cy="132" r="10" fill="#111827" />
+  <!-- Seed texture -->
+  <path d="M146 142 L154 166 L164 142" stroke="#D4A84B" stroke-width="1.5" fill="none" opacity="0.4" stroke-linecap="round"/>
 
-  <!-- 口（ちょいゆる笑顔） -->
+  <!-- Stem -->
+  <path d="M160 126 Q158 92 160 62" stroke="#2D9D5E" stroke-width="5" stroke-linecap="round" fill="none"/>
+
+  <!-- Left leaf -->
+  <path d="M160 96 Q126 68 132 42 Q150 56 160 88" fill="#2D9D5E"/>
+  <path d="M158 92 Q142 72 136 50" stroke="#1B6B45" stroke-width="0.8" fill="none" opacity="0.3"/>
+
+  <!-- Right leaf -->
+  <path d="M160 78 Q194 50 188 24 Q170 38 160 70" fill="#5FBF84"/>
+  <path d="M162 74 Q180 54 186 32" stroke="#1B6B45" stroke-width="0.8" fill="none" opacity="0.3"/>
+
+  <!-- Tiny new bud -->
+  <ellipse cx="163" cy="58" rx="5" ry="8" fill="#5FBF84" opacity="0.6" transform="rotate(-12, 163, 58)"/>
+
+  <!-- Eyes -->
+  <ellipse cx="144" cy="196" rx="8" ry="9" fill="#1a2e1a"/>
+  <ellipse cx="176" cy="196" rx="8" ry="9" fill="#1a2e1a"/>
+
+  <!-- Eye shine -->
+  <circle cx="148" cy="192" r="3.2" fill="white"/>
+  <circle cx="180" cy="192" r="3.2" fill="white"/>
+  <circle cx="142" cy="200" r="1.5" fill="white" opacity="0.5"/>
+  <circle cx="174" cy="200" r="1.5" fill="white" opacity="0.5"/>
+
+  <!-- Blush -->
+  <ellipse cx="130" cy="210" rx="10" ry="6" fill="#F2A0A0" opacity="0.3"/>
+  <ellipse cx="190" cy="210" rx="10" ry="6" fill="#F2A0A0" opacity="0.3"/>
+
+  <!-- Smile -->
   <path
-    d="M132 165
-       C 145 180, 175 180, 188 165"
+    d="M146 222 Q160 234 174 222"
     fill="none"
-    stroke="#111827"
-    stroke-width="6"
+    stroke="#1a2e1a"
+    stroke-width="2.8"
     stroke-linecap="round"
   />
 
-  <!-- 足（Mini“Step”感を強調） -->
-  <!-- 左足 -->
-  <ellipse cx="135" cy="255" rx="28" ry="20" fill="#ffffff" stroke="#fed7aa" stroke-width="3" />
-  <circle cx="150" cy="238" r="9" fill="#ffffff" stroke="#fed7aa" stroke-width="3" />
-  <circle cx="156" cy="248" r="8" fill="#ffffff" stroke="#fed7aa" stroke-width="3" />
-
-  <!-- 右足 -->
-  <ellipse cx="185" cy="255" rx="28" ry="20" fill="#ffffff" stroke="#fed7aa" stroke-width="3" />
-  <circle cx="170" cy="238" r="9" fill="#ffffff" stroke="#fed7aa" stroke-width="3" />
-  <circle cx="164" cy="248" r="8" fill="#ffffff" stroke="#fed7aa" stroke-width="3" />
-
-  <!-- アクセント用ミニステップカラー -->
-  <circle cx="65" cy="80" r="10" fill="#f97316" opacity="0.9" />
-  <circle cx="255" cy="85" r="8" fill="#fb923c" opacity="0.7" />
-  <circle cx="260" cy="220" r="7" fill="#fdba74" opacity="0.8" />
+  <!-- Tiny feet -->
+  <ellipse cx="144" cy="272" rx="12" ry="6" fill="#C4956A"/>
+  <ellipse cx="176" cy="272" rx="12" ry="6" fill="#C4956A"/>
 </svg>

@@ -1,4 +1,4 @@
-// main.js - index.html 用ロジック
+// main.js - index.html logic
 (function () {
     "use strict";
 
@@ -15,30 +15,27 @@
         };
     }
 
-    // ========= 共通ユーティリティへのショートカット =========
+    // ========= Shared utilities =========
     var U = window.MINISTEP_UTILS;
 
-    // ========= 定数 =========
+    // ========= Constants =========
     var ONBOARD_KEY = "ministep-onboarded";
 
-    // ========= モジュールスコープ変数 =========
+    // ========= Module-scope variables =========
     var currentTodayChallenge = null;
     var selectedCategory = "all";
-    var toastTimer = null;  // showToast._t パターンを廃止しモジュール変数で管理
+    var toastTimer = null;
 
-    // ========= data.js から =========
-    var quotes_ja  = (window.MINISTEP_DATA && window.MINISTEP_DATA.quotes_ja)  || [];
-    var quotes_en  = (window.MINISTEP_DATA && window.MINISTEP_DATA.quotes_en)  || [];
+    // ========= Data =========
+    var quotes    = (window.MINISTEP_DATA && window.MINISTEP_DATA.quotes)     || [];
     var challenges = (window.MINISTEP_DATA && window.MINISTEP_DATA.challenges) || [];
 
-    // ========= 日付ユーティリティ（main.js 固有） =========
-    // getDayOfYear: DST を避けるため月・日から直接算出
+    // ========= Date utilities =========
     function getDayOfYear(d) {
         d = d || new Date();
         var monthDays = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
         var m = d.getMonth();
         var doy = monthDays[m] + d.getDate();
-        // うるう年補正（3月以降）
         if (m >= 2) {
             var y = d.getFullYear();
             if ((y % 4 === 0 && y % 100 !== 0) || y % 400 === 0) doy += 1;
@@ -54,7 +51,7 @@
         return diff > 0 ? diff : 0;
     }
 
-    // ========= stats 集計（main.js 固有） =========
+    // ========= Stats aggregation =========
     function computeTotalStats(stats) {
         var totalDays = 0;
         var totalCompleted = 0;
@@ -70,7 +67,7 @@
         return { totalDays: totalDays, totalCompleted: totalCompleted };
     }
 
-    // ========= 今日のチャレンジ取得 =========
+    // ========= Today's challenge =========
     function getTodayChallenge() {
         var p = U.loadLatestPayload();
         if (!p || !p.challenge || !p.createdAt) return null;
@@ -79,8 +76,7 @@
         return p.challenge;
     }
 
-    // ========= ストリーク計算 =========
-    // 今日未達成の場合は昨日からカウント開始（当日未達成でも前日の連続が 0 にならない）
+    // ========= Streak calculation =========
     function calculateStreak(stats) {
         var streak = 0;
         var today = new Date();
@@ -98,7 +94,7 @@
         return streak;
     }
 
-    // ========= 表示更新 =========
+    // ========= Render functions =========
     function renderStreak() {
         var el = document.getElementById("streak-count");
         if (!el) return;
@@ -122,7 +118,7 @@
         el.textContent = String(count);
     }
 
-    // ========= 今日のチャレンジ表示 =========
+    // ========= Today's challenge display =========
     function renderTodayChallenge() {
         var emptyEl     = document.getElementById("today-challenge-empty");
         var cardEl      = document.getElementById("today-challenge-card");
@@ -143,12 +139,8 @@
         }
 
         emptyEl.style.display = "none";
+        textEl.textContent = ch.text;
 
-        var lang = window.I18N ? I18N.get() : "ja";
-        // 英語ユーザーには text_en を使用（なければ日本語フォールバック）
-        textEl.textContent = (lang === "en" && ch.text_en) ? ch.text_en : ch.text;
-
-        // i18n キーを使用（ハードコード廃止）
         categoryEl.textContent = I18N.t("label_category") + U.categoryLabel(ch.category);
         categoryEl.className = "pill pill-" + ch.category;
 
@@ -161,14 +153,13 @@
         cardEl.classList.add("visible");
     }
 
-    // ========= Today リング & スタンプ =========
+    // ========= Today ring & stamp =========
     function updateTodayRing() {
         var stats = U.loadStats();
         var key = U.getTodayKey();
         var done = stats[key] && stats[key].completed ? stats[key].completed : 0;
         var goal = 1;
         var pct = done / goal;
-        // pct < 0 のケースは存在しないため削除済み
         if (pct > 1) pct = 1;
 
         var len = 163;
@@ -188,19 +179,15 @@
         var note = document.getElementById("daily-limit-note");
         if (!btn || !note) return;
 
-        var lang = window.I18N ? I18N.get() : "ja";
-
         if (U.hasCompletedToday()) {
             btn.disabled = true;
             btn.classList.add("is-disabled");
-            btn.textContent = (lang === "ja" ? "今日は達成済み" : "Done for today");
+            btn.textContent = "Done for today";
 
             var ms = msUntilEndOfDay();
             var h  = Math.floor(ms / 3600000);
             var m  = Math.round((ms % 3600000) / 60000);
-            note.textContent = (lang === "ja")
-                ? "今日はこれでOK。次のチャレンジは約 " + h + "時間" + m + "分後。"
-                : "You're all set. Next draw in ~" + h + "h " + m + "m.";
+            note.textContent = "You're all set. Next draw in ~" + h + "h " + m + "m.";
             note.style.display = "block";
         } else {
             btn.disabled = false;
@@ -211,7 +198,7 @@
         }
     }
 
-    // ========= ガチャボタン UI =========
+    // ========= Draw button UI =========
     function updateDrawButtonUI() {
         var drawBtn = document.getElementById("draw-btn");
         if (!drawBtn) return;
@@ -240,15 +227,11 @@
         }
     }
 
-    // ========= 完了処理 =========
+    // ========= Completion handler =========
     function addCompletionForToday(ch) {
         if (!ch) return false;
         if (U.hasCompletedToday()) {
-            if (window.I18N) {
-                alert(I18N.get() === "ja"
-                    ? "今日は達成済みです。また明日。"
-                    : "Already completed today. See you tomorrow!");
-            }
+            alert("Already completed today. See you tomorrow!");
             updateDailyLimitUI();
             updateDrawButtonUI();
             return false;
@@ -273,7 +256,7 @@
         return true;
     }
 
-    // ========= お祝いモーダル & トースト =========
+    // ========= Confetti & toast =========
     function confettiLite() {
         var root = document.createElement("div");
         root.className = "confetti";
@@ -319,29 +302,23 @@
         });
     }
 
-    // ========= I18N 初期化 =========
+    // ========= I18N init =========
     if (window.I18N && typeof I18N.init === "function") {
         I18N.init();
     }
 
     // ========= DOMContentLoaded =========
     document.addEventListener("DOMContentLoaded", function () {
-        if (window.I18N && typeof I18N.mountSwitcher === "function") {
-            I18N.mountSwitcher();
-        }
-
         showIntroIfNeeded();
 
-        // 今日のひとこと
-        var lang = window.I18N ? I18N.get() : "ja";
-        var qs   = (lang === "ja") ? quotes_ja : quotes_en;
-        if (qs.length) {
-            var qi = getDayOfYear() % qs.length;
-            var q  = qs[qi];
+        // Daily quote
+        if (quotes.length) {
+            var qi = getDayOfYear() % quotes.length;
+            var q  = quotes[qi];
             var qt = document.getElementById("daily-quote");
             var qa = document.getElementById("daily-quote-author");
-            if (qt) qt.textContent = (lang === "ja" ? "「" : "\u201c") + q.text + (lang === "ja" ? "」" : "\u201d");
-            if (qa) qa.textContent = (lang === "ja" ? "― " : "— ") + q.author;
+            if (qt) qt.textContent = "\u201c" + q.text + "\u201d";
+            if (qa) qa.textContent = "\u2014 " + q.author;
         }
 
         renderStreak();
@@ -358,7 +335,7 @@
             updateDrawButtonUI();
         }, 60000);
 
-        // 達成ボタン
+        // Mark done button
         var completeBtn = document.getElementById("today-challenge-complete");
         if (completeBtn) {
             completeBtn.addEventListener("click", function () {
@@ -376,7 +353,7 @@
             });
         }
 
-        // モーダル OK
+        // Modal OK
         var modalOverlay = document.getElementById("congrats-overlay");
         var closeBtn     = document.getElementById("congrats-close");
         if (closeBtn && modalOverlay) {
@@ -392,7 +369,7 @@
             });
         }
 
-        // カテゴリ選択（.closest は上部の polyfill でサポート済み）
+        // Category selection
         var categoryList = document.getElementById("category-list");
         if (categoryList) {
             categoryList.addEventListener("click", function (ev) {
@@ -408,12 +385,11 @@
             });
         }
 
-        // ガチャボタン（当日達成済みなら updateDrawButtonUI 側で disable）
+        // Draw button
         var drawBtn = document.getElementById("draw-btn");
         if (drawBtn) {
             drawBtn.addEventListener("click", function () {
                 if (U.hasCompletedToday()) {
-                    // 念のためガード（UI 的には押せない想定）
                     updateDrawButtonUI();
                     return;
                 }

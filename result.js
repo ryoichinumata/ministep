@@ -1,29 +1,21 @@
-// result.js - result.html 用ロジック
+// result.js - result.html logic
 (function () {
     "use strict";
 
-    // ========= 共通ユーティリティへのショートカット =========
+    // ========= Shared utilities =========
     var U = window.MINISTEP_UTILS;
 
     var REROLL_STATS_KEY = "ministep-reroll-stats";
 
     var challenges = (window.MINISTEP_DATA && window.MINISTEP_DATA.challenges) || [];
 
-    // ========= 日付フォーマット（result.html 固有） =========
+    // ========= Date formatting =========
     function formatTodayLabel() {
         var d    = new Date();
-        var lang = window.I18N ? I18N.get() : "ja";
-        if (lang === "ja") {
-            var m   = d.getMonth() + 1;
-            var day = d.getDate();
-            var w   = "日月火水木金土".charAt(d.getDay());
-            return m + "月" + day + "日（" + w + "）";
-        } else {
-            var mlist = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
-                         "Aug", "Sep", "Oct", "Nov", "Dec"];
-            var wlist = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-            return mlist[d.getMonth()] + " " + d.getDate() + " (" + wlist[d.getDay()] + ")";
-        }
+        var mlist = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
+                     "Aug", "Sep", "Oct", "Nov", "Dec"];
+        var wlist = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        return mlist[d.getMonth()] + " " + d.getDate() + " (" + wlist[d.getDay()] + ")";
     }
 
     function updateTodayCount(stats) {
@@ -34,7 +26,7 @@
         el.textContent = String(val);
     }
 
-    // ========= リロール stats =========
+    // ========= Reroll stats =========
     function loadRerollStats() {
         var raw = U.safeGetItem(REROLL_STATS_KEY);
         var obj = U.safeParse(raw, {});
@@ -54,16 +46,12 @@
         saveRerollStats(rs);
     }
 
-    // ========= I18N 初期化 =========
+    // ========= I18N init =========
     if (window.I18N && typeof I18N.init === "function") {
         I18N.init();
     }
 
     document.addEventListener("DOMContentLoaded", function () {
-        if (window.I18N && typeof I18N.mountSwitcher === "function") {
-            I18N.mountSwitcher();
-        }
-
         var todayDateEl = document.getElementById("today-date");
         if (todayDateEl) todayDateEl.textContent = formatTodayLabel();
 
@@ -84,13 +72,10 @@
 
         function renderChallenge(ch) {
             if (!ch) return;
-            var lang = window.I18N ? I18N.get() : "ja";
 
-            // 英語ユーザーには text_en を使用（なければ日本語フォールバック）
-            if (textEl) textEl.textContent = (lang === "en" && ch.text_en) ? ch.text_en : ch.text;
+            if (textEl) textEl.textContent = ch.text;
 
             if (categoryEl) {
-                // i18n キーを使用（ハードコード廃止）
                 categoryEl.textContent = I18N.t("label_category") + U.categoryLabel(ch.category);
                 categoryEl.className = "pill pill-" + ch.category;
             }
@@ -100,14 +85,13 @@
                 var i;
                 for (i = 0; i < ch.difficulty; i++) stars += "★";
                 for (i = 0; i < 3 - ch.difficulty; i++) emptyStars += "☆";
-                // i18n キーを使用（ハードコード廃止）
                 difficultyEl.textContent = I18N.t("label_difficulty") + stars + emptyStars;
             }
         }
 
         renderChallenge(currentChallenge);
 
-        // --- X シェアボタン ---
+        // --- X share button ---
         var shareBtn = document.getElementById("share-x-btn");
         if (shareBtn) {
             shareBtn.addEventListener("click", function () {
@@ -115,21 +99,13 @@
                     if (window.I18N && I18N.t) {
                         alert(I18N.t("alert_share_missing"));
                     } else {
-                        alert("シェアできるチャレンジが見つかりませんでした。");
+                        alert("No challenge to share.");
                     }
                     return;
                 }
 
-                var lang = window.I18N ? I18N.get() : "ja";
                 var baseUrl = "https://ministep.net/";
-                // 英語ユーザーにはシェアテキストも英語化
-                var challengeText = (lang === "en" && currentChallenge.text_en)
-                    ? currentChallenge.text_en
-                    : currentChallenge.text;
-                var textJa = "MiniStepで今日の小さなチャレンジを引きました：\n「" + challengeText + "」";
-                var textEn = "I got today's tiny challenge on MiniStep:\n\"" + challengeText + "\"";
-
-                var text = (lang === "ja") ? textJa : textEn;
+                var text = "I got today's tiny challenge on MiniStep:\n\"" + currentChallenge.text + "\"";
 
                 var intentUrl = "https://twitter.com/intent/tweet"
                     + "?text=" + encodeURIComponent(text)
@@ -139,7 +115,7 @@
             });
         }
 
-        // ========= リロール状態 =========
+        // ========= Reroll state =========
         var rerollBtn   = document.getElementById("reroll-btn");
         var rerollLabel = document.getElementById("reroll-label");
         var rerollPill  = document.getElementById("reroll-pill");
@@ -150,7 +126,6 @@
             var cnt = getTodayRerollCount(rs);
             var left = Math.max(0, 3 - cnt);
 
-            // stale stats バグ修正: 毎回最新の stats を取得する
             var freshStats = U.loadStats();
 
             if (rerollLabel && window.I18N) {
@@ -162,9 +137,7 @@
                 rerollPill.textContent = filled + empty + " " + cnt + "/3";
             }
             if (rerollSr) {
-                rerollSr.textContent = (window.I18N && I18N.get() === "ja")
-                    ? "引き直しは残り" + left + "回です"
-                    : "Redraws left: " + left;
+                rerollSr.textContent = "Redraws left: " + left;
             }
             if (rerollBtn) {
                 rerollBtn.disabled = (cnt >= 3 || U.hasCompletedToday(freshStats));
@@ -176,7 +149,7 @@
 
         renderRerollState();
 
-        // トップへボタン
+        // Back button
         var backBtn = document.getElementById("back-btn");
         if (backBtn) {
             backBtn.addEventListener("click", function (e) {
@@ -185,7 +158,7 @@
             });
         }
 
-        // リロールボタン
+        // Reroll button
         if (rerollBtn) {
             rerollBtn.addEventListener("click", function () {
                 var statsNow = U.loadStats();
@@ -217,12 +190,11 @@
             });
         }
 
-        // ========= タイマー & メモ & マップ =========
+        // ========= Timer, memo, map =========
         var tBtn = document.getElementById("qa-timer");
         if (tBtn) {
             tBtn.addEventListener("click", function () {
-                var langNow   = window.I18N ? I18N.get() : "ja";
-                var baseLabel = window.I18N ? I18N.t("qa_timer") : (langNow === "ja" ? "3分タイマー" : "3-min timer");
+                var baseLabel = window.I18N ? I18N.t("qa_timer") : "3-min timer";
                 var sec = 180;
                 tBtn.disabled = true;
                 tBtn.textContent = baseLabel + " (" + sec + "s)";
@@ -249,12 +221,7 @@
         var mapBtn = document.getElementById("qa-map");
         if (mapBtn) {
             mapBtn.addEventListener("click", function () {
-                var langNow = window.I18N ? I18N.get() : "ja";
-                if (langNow === "ja") {
-                    window.open("https://www.google.com/maps/search/%E6%95%A3%E6%AD%A9%E3%82%B3%E3%83%BC%E3%82%B9/", "_blank", "noopener,noreferrer");
-                } else {
-                    window.open("https://www.google.com/maps/search/walk+spots/", "_blank", "noopener,noreferrer");
-                }
+                window.open("https://www.google.com/maps/search/walk+spots/", "_blank", "noopener,noreferrer");
             });
         }
 

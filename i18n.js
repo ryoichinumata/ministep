@@ -66,7 +66,10 @@
 
             share_x: "𝕏 にシェア",
 
-            intro_start: "はじめる"
+            intro_start: "はじめる",
+
+            label_category:  "カテゴリ: ",
+            label_difficulty: "難易度: "
         },
 
         en: {
@@ -130,17 +133,15 @@
 
             share_x: "Share on 𝕏",
 
-            intro_start: "Get started"
+            intro_start: "Get started",
+
+            label_category:   "Category: ",
+            label_difficulty:  "Difficulty: "
         }
     };
 
+    // detect() はブラウザ言語のみを参照する（localStorage の確認は get() 側で行う）
     function detect() {
-        var saved = null;
-        try {
-            saved = localStorage.getItem(KEY);
-        } catch (e) { }
-        if (saved && SUPPORTED.indexOf(saved) !== -1) return saved;
-
         var langs = [];
         if (navigator.languages && navigator.languages.length) {
             langs = navigator.languages;

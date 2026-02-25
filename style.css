@@ -1228,3 +1228,102 @@ button:focus-visible,
   text-decoration: underline;
   text-underline-offset: 2px;
 }
+
+/* ============================
+   Completed Challenges page
+   ============================ */
+.completed-summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  border-radius: var(--r-md);
+  background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%);
+  border: 1px solid rgba(34,197,94,.2);
+  box-shadow: var(--shadow-xs);
+}
+.completed-count-label {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  flex: 1;
+}
+.completed-count-value {
+  font-size: 24px;
+  font-weight: 900;
+  color: #16A34A;
+  line-height: 1;
+  letter-spacing: -.01em;
+}
+.completed-empty {
+  font-size: var(--fs-body);
+  color: var(--color-text-muted);
+  padding: 24px 0;
+  text-align: center;
+  line-height: 1.8;
+}
+.completed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.completed-card {
+  border-radius: var(--r-md);
+  background: #FDFAF6;
+  border: 1px solid rgba(248,148,60,.2);
+  padding: 14px 16px;
+  box-shadow: var(--shadow-xs);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.completed-card:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+.completed-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.completed-card-date {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: #16A34A;
+  letter-spacing: .02em;
+}
+.completed-card-difficulty {
+  font-size: 11px;
+  color: #F59E0B;
+}
+.completed-card-text {
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  color: var(--color-text);
+  margin: 0 0 10px;
+  font-weight: 500;
+}
+.completed-card-meta {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* View completed link on home page */
+.completed-link-row {
+  text-align: right;
+  margin: -6px 0 10px;
+}
+.completed-link {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--t-fast);
+}
+.completed-link:hover {
+  color: var(--brand-600);
+}

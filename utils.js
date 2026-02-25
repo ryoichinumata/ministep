@@ -98,7 +98,25 @@
         return map[cat] || cat;
     }
 
-    // ========= ガチャ（30日重複なし） =========
+    // ========= 達成済みチャレンジテキスト読み込み =========
+    function loadCompletedTexts() {
+        var stats = loadStats();
+        var completed = {};
+        var key;
+        for (key in stats) {
+            if (!stats.hasOwnProperty(key)) continue;
+            var rec = stats[key];
+            if (!rec || !Array.isArray(rec.items)) continue;
+            var i;
+            for (i = 0; i < rec.items.length; i++) {
+                var item = rec.items[i];
+                if (item && item.text) completed[item.text] = 1;
+            }
+        }
+        return completed;
+    }
+
+    // ========= ガチャ（達成済み除外 + 30日重複なし） =========
     // challenges: MINISTEP_DATA.challenges 配列を呼び出し元から渡す
     function pickRandomChallenge(category, challenges) {
         var pool = challenges;
@@ -117,8 +135,25 @@
         for (var i = 0; i < hist.length; i++) {
             recent[hist[i].text] = 1;
         }
-        var filtered = pool.filter(function (c) { return !recent[c.text]; });
+
+        // 達成済みチャレンジを除外
+        var completedTexts = loadCompletedTexts();
+
+        // 優先1: 達成済みでない & 最近引いていない
+        var filtered = pool.filter(function (c) {
+            return !completedTexts[c.text] && !recent[c.text];
+        });
+        // 優先2: 達成済みでない（最近引いたものは許可）
+        if (filtered.length === 0) {
+            filtered = pool.filter(function (c) { return !completedTexts[c.text]; });
+        }
+        // 優先3: 最近引いていない（全て達成済みの場合のみ — 達成済みも許可）
+        if (filtered.length === 0) {
+            filtered = pool.filter(function (c) { return !recent[c.text]; });
+        }
+        // 優先4: 全プール（最後の手段）
         if (filtered.length === 0) filtered = pool;
+
         if (filtered.length === 0) {
             if (window.I18N) alert(window.I18N.t("alert_no_candidates"));
             return null;
@@ -149,6 +184,7 @@
         pruneHistoryTo30Days: pruneHistoryTo30Days,
         loadLatestPayload:    loadLatestPayload,
         categoryLabel:        categoryLabel,
+        loadCompletedTexts:   loadCompletedTexts,
         pickRandomChallenge:  pickRandomChallenge
     };
 })(window);

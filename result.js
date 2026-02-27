@@ -12,10 +12,10 @@
     // ========= Date formatting =========
     function formatTodayLabel() {
         var d    = new Date();
-        var mlist = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
-                     "Aug", "Sep", "Oct", "Nov", "Dec"];
-        var wlist = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-        return mlist[d.getMonth()] + " " + d.getDate() + " (" + wlist[d.getDay()] + ")";
+        var mlist = ["1月", "2月", "3月", "4月", "5月", "6月", "7月",
+                     "8月", "9月", "10月", "11月", "12月"];
+        var wlist = ["日", "月", "火", "水", "木", "金", "土"];
+        return mlist[d.getMonth()] + d.getDate() + "日（" + wlist[d.getDay()] + "）";
     }
 
     function updateTodayCount(stats) {
@@ -105,7 +105,7 @@
                 }
 
                 var baseUrl = "https://ministep.net/";
-                var text = "I got today's tiny challenge on MiniStep:\n\"" + currentChallenge.text + "\"";
+                var text = "今日のMiniStepチャレンジ：\n「" + currentChallenge.text + "」";
 
                 var intentUrl = "https://twitter.com/intent/tweet"
                     + "?text=" + encodeURIComponent(text)
@@ -137,7 +137,7 @@
                 rerollPill.textContent = filled + empty + " " + cnt + "/3";
             }
             if (rerollSr) {
-                rerollSr.textContent = "Redraws left: " + left;
+                rerollSr.textContent = "残り引き直し: " + left;
             }
             if (rerollBtn) {
                 rerollBtn.disabled = (cnt >= 3 || U.hasCompletedToday(freshStats));

@@ -1,71 +1,71 @@
-// i18n.js - English-only dictionary
+// i18n.js - 日本語専用辞書
 (function (global) {
     "use strict";
 
     var dict = {
-        app_title: "MiniStep – Tiny Challenge Gacha",
-        subtitle_brand: "Tiny challenge gacha",
-        subtitle: "Tap the button to draw one tiny challenge for today. The result is shown on the next page.",
+        app_title: "MiniStep – 小さなチャレンジガチャ",
+        subtitle_brand: "小さな挑戦ガチャ",
+        subtitle: "ボタンをタップして今日のチャレンジを1つ引こう。結果は次のページに表示されます。",
 
-        daily_quote_label: "Daily quote",
-        streak_label: "Streak",
-        summary_days_label: "Days completed",
-        summary_total_label: "Total challenges",
-        today_count_label: "Today's count",
-        micro_coach: "Start tiny. Any small step counts.",
-        unit_day: "days",
-        unit_item: "items",
-        unit_times: "times",
+        daily_quote_label: "今日の名言",
+        streak_label: "連続記録",
+        summary_days_label: "達成日数",
+        summary_total_label: "合計チャレンジ",
+        today_count_label: "今日の達成数",
+        micro_coach: "小さく始めよう。どんな一歩でも前進。",
+        unit_day: "日",
+        unit_item: "個",
+        unit_times: "回",
 
-        today_challenge: "Today's challenge",
-        empty_state_not_drawn: "You haven't drawn today.",
-        filter_label: "Choose by mood:",
+        today_challenge: "今日のチャレンジ",
+        empty_state_not_drawn: "まだ今日のチャレンジを引いていません。",
+        filter_label: "気分で選ぶ：",
 
-        cat_all: "Anything",
-        cat_outside: "Go outside",
-        cat_communication: "Talk to someone",
-        cat_self: "Me time",
-        cat_relax: "Relax",
-        cat_refresh: "Refresh",
-        cat_focus: "Focus",
+        cat_all: "なんでも",
+        cat_outside: "外に出る",
+        cat_communication: "人と話す",
+        cat_self: "自分時間",
+        cat_relax: "リラックス",
+        cat_refresh: "気分転換",
+        cat_focus: "集中",
 
-        draw: "Draw today's challenge",
-        draw_disabled: "Come back tomorrow",
+        draw: "今日のチャレンジを引く",
+        draw_disabled: "明日またね",
 
-        badge_today_only: "Today only",
-        mark_done: "✅ Mark done",
-        stamp_done: "Done",
+        badge_today_only: "本日限り",
+        mark_done: "✅ 達成した",
+        stamp_done: "達成",
 
-        congrats_title: "🎉 Congratulations!",
+        congrats_title: "🎉 おめでとう！",
         congrats_ok: "OK",
-        toast_streak: "🎉 {n}-day streak. Great pace!",
+        toast_streak: "🎉 {n}日連続達成！すごいペース！",
 
-        alert_no_category: "No challenges in this category yet 🙇",
-        alert_no_candidates: "No challenge candidates are registered yet.",
-        alert_no_today: "No challenge for today. Please draw first.",
-        alert_direct_link: "No draw yet. Please draw on the first page!",
-        alert_share_missing: "No challenge to share.",
-        alert_img_saved: "Image saved. Attach it in your X post.",
-        alert_img_error: "Failed to create image. Please try again.",
-        alert_reroll_limit: "Up to 3 redraws per day.",
-        alert_already_completed: "You already completed today's challenge! Don't push yourself too hard. Come back tomorrow.",
+        alert_no_category: "このカテゴリのチャレンジはまだありません 🙇",
+        alert_no_candidates: "チャレンジ候補がまだ登録されていません。",
+        alert_no_today: "今日のチャレンジがありません。先に引いてください。",
+        alert_direct_link: "まだ引いていません。最初のページで引いてください！",
+        alert_share_missing: "シェアするチャレンジがありません。",
+        alert_img_saved: "画像を保存しました。Xの投稿に添付してください。",
+        alert_img_error: "画像の作成に失敗しました。もう一度試してください。",
+        alert_reroll_limit: "1日3回まで引き直せます。",
+        alert_already_completed: "今日のチャレンジはもう達成済みです！頑張りすぎないで。また明日！",
 
-        reroll: "← Draw again",
-        reroll_limit: "Redraws today: {count} / 3",
-        back_title: "Back to Home",
-        back_sub: "It will be shown as today's card (mark done on Home).",
-        back_hint: "This challenge will appear on the Home card today. Mark it done there when you finish.",
-        qa_timer: "⏱ 3-min timer",
-        qa_memo: "📝 Open memo",
-        qa_map: "🧭 Nearby walk",
-        timer_done: "3 minutes passed. Nice job!",
+        reroll: "← 引き直す",
+        reroll_limit: "本日の引き直し: {count} / 3",
+        back_title: "ホームに戻る",
+        back_sub: "今日のカードとして表示されます（ホームで達成をタップ）。",
+        back_hint: "このチャレンジは今日のホームカードに表示されます。完了したらそこで達成をタップ。",
+        qa_timer: "⏱ 3分タイマー",
+        qa_memo: "📝 メモを開く",
+        qa_map: "🧭 近くを散歩",
+        timer_done: "3分経ちました。よくできました！",
 
-        share_x: "Share on 𝕏",
+        share_x: "𝕏でシェア",
 
-        intro_start: "Get started",
+        intro_start: "はじめる",
 
-        label_category:   "Category: ",
-        label_difficulty:  "Difficulty: "
+        label_category:   "カテゴリ: ",
+        label_difficulty:  "難易度: "
     };
 
     function t(key, params) {
@@ -98,11 +98,11 @@
         } catch (e) { }
     }
 
-    function get() { return "en"; }
+    function get() { return "ja"; }
 
     function init() {
         try {
-            document.documentElement.setAttribute("lang", "en");
+            document.documentElement.setAttribute("lang", "ja");
         } catch (e) { }
         apply();
     }

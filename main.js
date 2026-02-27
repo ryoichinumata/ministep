@@ -182,12 +182,12 @@
         if (U.hasCompletedToday()) {
             btn.disabled = true;
             btn.classList.add("is-disabled");
-            btn.textContent = "Done for today";
+            btn.textContent = "本日達成済み";
 
             var ms = msUntilEndOfDay();
             var h  = Math.floor(ms / 3600000);
             var m  = Math.round((ms % 3600000) / 60000);
-            note.textContent = "You're all set. Next draw in ~" + h + "h " + m + "m.";
+            note.textContent = "完了です。次の抽選まで約" + h + "時間" + m + "分。";
             note.style.display = "block";
         } else {
             btn.disabled = false;
@@ -231,7 +231,7 @@
     function addCompletionForToday(ch) {
         if (!ch) return false;
         if (U.hasCompletedToday()) {
-            alert("Already completed today. See you tomorrow!");
+            alert("今日のチャレンジはもう達成済みです！また明日！");
             updateDailyLimitUI();
             updateDrawButtonUI();
             return false;

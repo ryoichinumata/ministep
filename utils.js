@@ -46,10 +46,18 @@
         var s = safeStringify(stats);
         if (s) safeSetItem(STATS_KEY, s);
     }
+    var DAILY_LIMIT = 3;
+
     function hasCompletedToday(stats) {
         stats = stats || loadStats();
         var key = getTodayKey();
-        return !!(stats[key] && stats[key].completed >= 1);
+        return !!(stats[key] && stats[key].completed >= DAILY_LIMIT);
+    }
+
+    function getTodayCompletedCount(stats) {
+        stats = stats || loadStats();
+        var key = getTodayKey();
+        return (stats[key] && typeof stats[key].completed === "number") ? stats[key].completed : 0;
     }
 
     // ========= 30日履歴 =========
@@ -166,6 +174,8 @@
     }
 
     global.MINISTEP_UTILS = {
+        DAILY_LIMIT:          DAILY_LIMIT,
+        getTodayCompletedCount: getTodayCompletedCount,
         safeGetItem:          safeGetItem,
         safeSetItem:          safeSetItem,
         safeParse:            safeParse,

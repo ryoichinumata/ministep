@@ -158,7 +158,7 @@
         var stats = U.loadStats();
         var key = U.getTodayKey();
         var done = stats[key] && stats[key].completed ? stats[key].completed : 0;
-        var goal = 1;
+        var goal = U.DAILY_LIMIT;
         var pct = done / goal;
         if (pct > 1) pct = 1;
 
@@ -171,7 +171,7 @@
         if (label) label.textContent = done + "/" + goal;
 
         var card = document.getElementById("today-challenge-card");
-        if (card) card.classList.toggle("done", done >= 1);
+        if (card) card.classList.toggle("done", done >= U.DAILY_LIMIT);
     }
 
     function updateDailyLimitUI() {
@@ -179,10 +179,13 @@
         var note = document.getElementById("daily-limit-note");
         if (!btn || !note) return;
 
-        if (U.hasCompletedToday()) {
+        var count = U.getTodayCompletedCount();
+        var limit = U.DAILY_LIMIT;
+
+        if (count >= limit) {
             btn.disabled = true;
             btn.classList.add("is-disabled");
-            btn.textContent = "本日達成済み";
+            btn.textContent = "本日" + limit + "回達成済み";
 
             var ms = msUntilEndOfDay();
             var h  = Math.floor(ms / 3600000);
@@ -193,8 +196,13 @@
             btn.disabled = false;
             btn.classList.remove("is-disabled");
             if (window.I18N) btn.textContent = I18N.t("mark_done");
-            note.textContent = "";
-            note.style.display = "none";
+            if (count > 0) {
+                note.textContent = "本日 " + count + "/" + limit + " 完了 ― あと" + (limit - count) + "回引けます";
+                note.style.display = "block";
+            } else {
+                note.textContent = "";
+                note.style.display = "none";
+            }
         }
     }
 
@@ -231,7 +239,7 @@
     function addCompletionForToday(ch) {
         if (!ch) return false;
         if (U.hasCompletedToday()) {
-            alert("今日のチャレンジはもう達成済みです！また明日！");
+            alert("今日は" + U.DAILY_LIMIT + "回達成済みです！また明日！");
             updateDailyLimitUI();
             updateDrawButtonUI();
             return false;

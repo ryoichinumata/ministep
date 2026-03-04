@@ -264,6 +264,33 @@
         return true;
     }
 
+    // ========= Draw badge (remaining count) =========
+    function renderDrawBadge() {
+        var badge = document.getElementById("draw-badge");
+        var remaining = document.getElementById("draw-remaining");
+        var count = U.getTodayCompletedCount();
+        var limit = U.DAILY_LIMIT;
+        var left = limit - count;
+
+        if (badge) {
+            if (left > 0 && count > 0) {
+                badge.textContent = "あと" + left + "回";
+                badge.classList.add("visible");
+            } else {
+                badge.classList.remove("visible");
+            }
+        }
+        if (remaining) {
+            if (count > 0 && left > 0) {
+                remaining.textContent = "あと" + left + "回引けます ✨";
+            } else if (left === 0) {
+                remaining.textContent = "今日のチャレンジをすべてコンプリート！🎉";
+            } else {
+                remaining.textContent = "";
+            }
+        }
+    }
+
     // ========= Confetti & toast =========
     function confettiLite() {
         var root = document.createElement("div");
@@ -336,11 +363,13 @@
         updateTodayRing();
         updateDailyLimitUI();
         updateDrawButtonUI();
+        renderDrawBadge();
 
         setInterval(function () {
             updateTodayRing();
             updateDailyLimitUI();
             updateDrawButtonUI();
+            renderDrawBadge();
         }, 60000);
 
         // Mark done button
@@ -352,11 +381,22 @@
                     return;
                 }
                 if (addCompletionForToday(currentTodayChallenge)) {
+                    var count = U.getTodayCompletedCount();
+                    var left = U.DAILY_LIMIT - count;
+                    var msgEl = document.getElementById("congrats-message");
+                    if (msgEl) {
+                        if (left > 0) {
+                            msgEl.textContent = "一歩前に進みました！あと" + left + "回チャレンジを引けます 🎲";
+                        } else {
+                            msgEl.textContent = "今日のチャレンジを全部コンプリート！最高です 🌟";
+                        }
+                    }
                     var overlay = document.getElementById("congrats-overlay");
                     if (overlay) overlay.classList.add("show");
                     var stats = U.loadStats();
                     var s = calculateStreak(stats);
                     if (window.I18N) showToast(I18N.t("toast_streak", { n: s }));
+                    renderDrawBadge();
                 }
             });
         }

@@ -26,7 +26,7 @@
 <li>③ できたら「✅ 達成した」をタップ</li>
 </ul>
 <p class="intro-note">
-                1日1回の達成。<br/>
+                1日最大3回チャレンジできます。<br/>
                 一緒に決めよう：「今日はこれで十分。」
             </p>
 <button class="btn-primary intro-button" data-i18n="intro_start" id="intro-start">はじめる</button>
@@ -103,6 +103,13 @@
                         まだ今日のチャレンジを引いていません。
                     </p>
 <article aria-live="polite" class="challenge-card" id="today-challenge-card">
+<div class="challenge-progress" aria-hidden="true">
+<svg class="ring" viewBox="0 0 58 58">
+<circle class="bg" cx="29" cy="29" r="26"/>
+<circle class="fg" id="today-ring" cx="29" cy="29" r="26" transform="rotate(-90 29 29)"/>
+</svg>
+<div class="ring-text" id="today-ring-text">0/3</div>
+</div>
 <div class="done-stamp" id="today-done-stamp">
 <span data-i18n="stamp_done">達成</span>
 </div>
@@ -135,34 +142,38 @@
 <div class="filter-label" data-i18n="filter_label">気分で選ぶ：</div>
 <div class="category-list" id="category-list">
 <button class="category-chip selected" data-category="all" type="button">
-<span data-i18n="cat_all">なんでも</span>
+<span class="chip-icon">✨</span><span data-i18n="cat_all">なんでも</span>
 </button>
 <button class="category-chip" data-category="outside" type="button">
-<span data-i18n="cat_outside">外に出る</span>
+<span class="chip-icon">🏃</span><span data-i18n="cat_outside">外に出る</span>
 </button>
 <button class="category-chip" data-category="communication" type="button">
-<span data-i18n="cat_communication">人と話す</span>
+<span class="chip-icon">💬</span><span data-i18n="cat_communication">人と話す</span>
 </button>
 <button class="category-chip" data-category="self" type="button">
-<span data-i18n="cat_self">自分時間</span>
+<span class="chip-icon">📖</span><span data-i18n="cat_self">自分時間</span>
 </button>
 <button class="category-chip" data-category="relax" type="button">
-<span data-i18n="cat_relax">リラックス</span>
+<span class="chip-icon">🛁</span><span data-i18n="cat_relax">リラックス</span>
 </button>
 <button class="category-chip" data-category="refresh" type="button">
-<span data-i18n="cat_refresh">気分転換</span>
+<span class="chip-icon">🎨</span><span data-i18n="cat_refresh">気分転換</span>
 </button>
 <button class="category-chip" data-category="focus" type="button">
-<span data-i18n="cat_focus">集中</span>
+<span class="chip-icon">🎯</span><span data-i18n="cat_focus">集中</span>
 </button>
 </div>
 </section>
 <!-- 引くボタン -->
 <section class="sticky-cta">
+<p class="draw-remaining" id="draw-remaining"></p>
+<div class="gacha-button-wrap">
 <button class="gacha-button" id="draw-btn">
 <span class="dice">🎲</span>
 <span data-i18n="draw">今日のチャレンジを引く</span>
 </button>
+<span class="draw-badge" id="draw-badge" aria-live="polite"></span>
+</div>
 </section>
 <!-- ブログティーザー -->
 <section aria-label="MiniStep 読みもの" class="blog-teaser">

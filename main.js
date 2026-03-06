@@ -393,6 +393,17 @@
                     }
                     var overlay = document.getElementById("congrats-overlay");
                     if (overlay) overlay.classList.add("show");
+
+                    // X share button: pre-fill tweet with the completed challenge
+                    var shareXEl = document.getElementById("congrats-share-x");
+                    if (shareXEl && currentTodayChallenge && currentTodayChallenge.text) {
+                        var tweetText = "MiniStepのチャレンジを達成しました！\n「" + currentTodayChallenge.text + "」\n#MiniStep #小さな一歩";
+                        var tweetUrl = "https://twitter.com/intent/tweet"
+                            + "?text=" + encodeURIComponent(tweetText)
+                            + "&url=" + encodeURIComponent("https://ministep.net/");
+                        shareXEl.href = tweetUrl;
+                        shareXEl.style.display = "";
+                    }
                     var stats = U.loadStats();
                     var s = calculateStreak(stats);
                     if (window.I18N) showToast(I18N.t("toast_streak", { n: s }));
